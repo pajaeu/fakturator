@@ -19,8 +19,7 @@
         </div>
         <div>
             @csrf
-            <button type="submit" class="cursor-pointer w-full py-3 px-4 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">
-                {{ __('Register') }}</button>
+            <button type="submit" class="cursor-pointer w-full py-3 px-4 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">{{ __('Register') }}</button>
         </div>
         <a href="{{ route('login') }}" class="block mt-3 text-center text-sm text-gray-500 underline hover:text-gray-600 transition-colors">{{ __('Have an account? Log In here.') }}</a>
     </form>

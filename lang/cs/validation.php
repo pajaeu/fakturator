@@ -34,7 +34,7 @@ return [
     'declined' => ':Attribute musí být odmítnuto.',
     'declined_if' => ':Attribute musí být odmítnuto, když :other je :value.',
     'different' => ':Attribute a :other se musí lišit.',
-    'digits' => ':Attribute musí být :digits pozic dlouhé.',
+    'digits' => ':Attribute musí mít :digits znaků.',
     'digits_between' => ':Attribute musí být dlouhé nejméně :min a nejvíce :max pozic.',
     'dimensions' => ':Attribute má neplatné rozměry.',
     'distinct' => ':Attribute má duplicitní hodnotu.',
@@ -279,5 +279,7 @@ return [
         'winner' => 'winner',
         'work' => 'work',
         'year' => 'rok',
+        'company_id' => 'IČO',
+        'vat_id' => 'DIČ',
     ],
 ];
