@@ -38,4 +38,9 @@ final class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+	public function avatarUrl(): string
+	{
+		return sprintf('https://api.dicebear.com/9.x/thumbs/svg?seed=%s', $this->email);
+	}
 }
