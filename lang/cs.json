@@ -249,5 +249,14 @@
 	"Developed by": "Vytvořil",
 	"Invoices": "Faktury",
 	"Contacts": "Kontakty",
-	"New bill": "Nový doklad"
+	"New bill": "Nový doklad",
+	"New contact": "Nový kontakt",
+	"Company name / Full name": "Název firmy / Jméno a přijmení",
+	"Email": "E-mailová adresa",
+	"Phone": "Telefonní číslo",
+	"Address": "Ulice a č.p.",
+	"City": "Město / obec",
+	"ZIP": "PSČ",
+	"Country": "Země",
+	"Create contact": "Vytvořit kontakt"
 }
