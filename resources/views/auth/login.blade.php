@@ -2,7 +2,7 @@
     <h1 class="mb-10 text-3xl font-semibold text-center">Vítejte zpátky</h1>
     <form action="{{ route('login') }}" method="post">
         <div class="mb-4">
-            <x-form.input type="email" name="email" placeholder="Email" @class(['border-red-500' => $errors->has('email')])/>
+            <x-form.input type="email" name="email" value="{{ old('email') }}" placeholder="Email" @class(['border-red-500' => $errors->has('email')])/>
             <x-form.input-error name="email"/>
         </div>
         <div class="mb-5">

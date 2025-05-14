@@ -2,19 +2,19 @@
     <h1 class="mb-10 text-3xl font-semibold text-center">Nový účet</h1>
     <form action="{{ route('register') }}" method="post">
         <div class="mb-4">
-            <x-form.input type="text" name="name" placeholder="Jméno" @class(['border-red-500' => $errors->has('name')])/>
-            <x-form.input-error name="name"/>
-        </div>
-        <div class="mb-4">
-            <x-form.input type="email" name="email" placeholder="Email" @class(['border-red-500' => $errors->has('email')])/>
+            <x-form.input type="email" name="email" value="{{ old('email') }}" placeholder="Email *" @class(['border-red-500' => $errors->has('email')])/>
             <x-form.input-error name="email"/>
         </div>
+        <div class="mb-4">
+            <x-form.input type="text" name="company_id" value="{{ old('company_id') }}" placeholder="IČO" @class(['border-red-500' => $errors->has('company_id')])/>
+            <x-form.input-error name="company_id"/>
+        </div>
         <div class="mb-5">
-            <x-form.input type="password" name="password" placeholder="Heslo" @class(['border-red-500' => $errors->has('password')])/>
+            <x-form.input type="password" name="password" placeholder="Heslo *" @class(['border-red-500' => $errors->has('password')])/>
             <x-form.input-error name="password"/>
         </div>
         <div class="mb-5">
-            <x-form.input type="password" name="password_confirmation" placeholder="Potvrdit heslo" @class(['border-red-500' => $errors->has('password_confirmation')])/>
+            <x-form.input type="password" name="password_confirmation" placeholder="Potvrdit heslo *" @class(['border-red-500' => $errors->has('password_confirmation')])/>
             <x-form.input-error name="password_confirmation"/>
         </div>
         <div>
