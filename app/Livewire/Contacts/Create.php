@@ -47,6 +47,8 @@ final class Create extends Component
         Contact::query()->create($data);
 
         // todo redirect to contact detail
+
+
     }
 
     public function render(): View
