@@ -26,6 +26,11 @@ final class User extends Authenticatable
         'remember_token',
     ];
 
+    public function avatarUrl(): string
+    {
+        return sprintf('https://api.dicebear.com/9.x/thumbs/svg?seed=%s', $this->email);
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -38,9 +43,4 @@ final class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-	public function avatarUrl(): string
-	{
-		return sprintf('https://api.dicebear.com/9.x/thumbs/svg?seed=%s', $this->email);
-	}
 }

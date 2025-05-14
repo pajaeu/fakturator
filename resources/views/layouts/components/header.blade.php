@@ -1,4 +1,4 @@
-<header class="py-6 border-b border-gray-200 bg-gray-50">
+<header class="py-4 border-b border-gray-300 bg-gray-100">
     <x-container class="flex items-center">
         <a href="{{ route('dashboard') }}" class="block">
             <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-auto h-7">

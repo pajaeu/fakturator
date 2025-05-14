@@ -245,5 +245,9 @@
 	"VAT ID": "DIČ",
 	"Password": "Heslo",
 	"Confirm password": "Potvrdit heslo",
-	"Have an account? Log In here.": "Již máte účet? Přihlašte se zde."
+	"Have an account? Log In here.": "Již máte účet? Přihlašte se zde.",
+	"Developed by": "Vytvořil",
+	"Invoices": "Faktury",
+	"Contacts": "Kontakty",
+	"New bill": "Nový doklad"
 }
