@@ -37,6 +37,11 @@ final class Create extends Component
     #[Validate('email|nullable')]
     public ?string $email = null;
 
+    public function updatedCompanyId()
+    {
+        // todo get data from ares
+    }
+
     public function save(): void
     {
         $this->validate();
@@ -47,8 +52,6 @@ final class Create extends Component
         Contact::query()->create($data);
 
         // todo redirect to contact detail
-
-
     }
 
     public function render(): View
