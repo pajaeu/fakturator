@@ -5,38 +5,91 @@ declare(strict_types=1);
 namespace App\Livewire\Contacts;
 
 use App\Models\Contact;
+use Illuminate\Database\Query\Builder;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 final class Create extends Component
 {
-    #[Validate('required|digits:8|unique:contacts,company_id')]
     public ?string $company_id = null;
 
-    #[Validate('string|min:10|max:12|nullable')]
     public ?string $vat_id = null;
 
-    #[Validate('required|string|min:6|max:255')]
     public ?string $name = null;
 
-    #[Validate('required|string|min:6|max:255')]
     public ?string $address = null;
 
-    #[Validate('required|string|min:6|max:255')]
     public ?string $city = null;
 
-    #[Validate('required|string|min:6|max:255')]
     public ?string $country = null;
 
-    #[Validate('required|string|min:5|max:255')]
     public ?string $zip = null;
 
-    #[Validate('string|min:6|nullable')]
     public ?string $phone = null;
 
-    #[Validate('email|nullable')]
     public ?string $email = null;
+
+    /** @return array<string, mixed> */
+    public function rules(): array
+    {
+        return [
+            'company_id' => [
+                'required',
+                'digits:8',
+                Rule::unique('contacts')->where(fn (Builder $query) => $query->where('user_id', auth()->id())),
+            ],
+            'vat_id' => Rule::when($this->vat_id !== null, [
+                'string',
+                'min:10',
+                'max:12',
+            ]),
+            'name' => [
+                'required',
+                'string',
+                'min:6',
+                'max:255',
+            ],
+            'address' => [
+                'required',
+                'string',
+                'min:6',
+                'max:255',
+            ],
+            'city' => [
+                'required',
+                'string',
+                'min:6',
+                'max:255',
+            ],
+            'country' => [
+                'required',
+                'string',
+                'min:6',
+                'max:255',
+            ],
+            'zip' => [
+                'required',
+                'string',
+                'min:5',
+                'max:255',
+            ],
+            'phone' => Rule::when($this->phone !== null, [
+                'string',
+                'min:6',
+            ]),
+            'email' => Rule::when($this->email !== null, [
+                'email',
+            ]),
+        ];
+    }
+
+    public function updated(string $property): void
+    {
+        $this->validateOnly($property);
+
+        $this->resetErrorBag($property);
+    }
 
     public function updatedCompanyId(): void
     {
@@ -50,7 +103,7 @@ final class Create extends Component
         /** @var array<string, mixed> $data */
         $data = $this->all();
 
-        Contact::query()->create($data);
+        Contact::query()->create($data + ['user_id' => auth()->id()]);
 
         // todo redirect to contact detail
     }

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->string('number')->index()->unique();
+            $table->string('number')->index();
             $table->date('billed_at');
             $table->date('due_at');
             $table->double('total');
@@ -37,6 +37,8 @@ return new class extends Migration
             $table->foreignId('contact_id')->index()->nullable()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
+
+            $table->unique(['number', 'user_id']);
         });
     }
 

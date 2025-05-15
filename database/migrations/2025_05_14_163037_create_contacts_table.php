@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('company_id')->index()->unique();
+            $table->string('company_id')->index();
             $table->string('vat_id')->nullable();
             $table->string('name');
             $table->string('address');
@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
+
+            $table->unique(['company_id', 'user_id']);
         });
     }
 
