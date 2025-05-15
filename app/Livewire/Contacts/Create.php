@@ -98,10 +98,8 @@ final class Create extends Component
 
     public function save(): void
     {
-        $this->validate();
-
         /** @var array<string, mixed> $data */
-        $data = $this->all();
+        $data = $this->validate();
 
         Contact::query()->create($data + ['user_id' => auth()->id()]);
 
