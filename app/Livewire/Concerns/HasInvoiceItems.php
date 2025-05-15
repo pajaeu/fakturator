@@ -34,7 +34,7 @@ trait HasInvoiceItems
 
         $this->validateItems();
 
-        $this->resetValidation('items.*');
+        $this->resetErrorBag('items.*');
     }
 
     public function addItem(): void
