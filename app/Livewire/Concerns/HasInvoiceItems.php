@@ -31,6 +31,10 @@ trait HasInvoiceItems
     public function updatedItems(): void
     {
         $this->recalculateTotals();
+
+        $this->validateItems();
+
+        $this->resetValidation('items.*');
     }
 
     public function addItem(): void

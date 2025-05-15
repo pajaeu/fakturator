@@ -33,7 +33,7 @@
                     </div>
                     <div class="flex-1">
                         @php($errorKey = "items.$index.description")
-                        <x-form.input wire:model.live="items.{{ $index }}.description" @class(['border-red-500' => $errors->has($errorKey)])/>
+                        <x-form.input wire:model.blur="items.{{ $index }}.description" @class(['border-red-500' => $errors->has($errorKey)])/>
                     </div>
                     <div class="w-20">
                         @php($errorKey = "items.$index.quantity")
