@@ -12,9 +12,16 @@ final class Create extends Component
 {
     use HasInvoiceItems;
 
+    public ?string $issued_at = null;
+
+    public ?string $due_at = null;
+
     public function mount(): void
     {
         $this->addItem();
+
+        $this->issued_at = now()->toDateString();
+        $this->due_at = now()->addWeek()->toDateString();
     }
 
     public function save(): void

@@ -37,14 +37,18 @@
                 <div class="flex gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/3">{{ __('Date of issue') }}</label>
                     <div class="w-full">
-                        <x-form.input wire:model.blur="issued_at" @class(['border-red-500' => $errors->has('issued_at')])/>
+                        <div x-data="{}" x-init="flatpickr($refs.input, { format: 'Y-m-d', minDate: '{{ now()->toDateString() }}'})">
+                            <x-form.input x-ref="input" wire:model.blur="issued_at" @class(['border-red-500' => $errors->has('issued_at')])/>
+                        </div>
                         <x-form.input-error name="issued_at"/>
                     </div>
                 </div>
                 <div class="flex gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/3">{{ __('Due date') }}</label>
                     <div class="w-full">
-                        <x-form.input wire:model.blur="due_at" @class(['border-red-500' => $errors->has('due_at')])/>
+                        <div x-data="{}" x-init="flatpickr($refs.input, { format: 'Y-m-d', minDate: '{{ now()->toDateString() }}'})">
+                            <x-form.input x-ref="input" wire:model.blur="due_at" @class(['border-red-500' => $errors->has('due_at')])/>
+                        </div>
                         <x-form.input-error name="due_at"/>
                     </div>
                 </div>
