@@ -12,6 +12,12 @@ final class Create extends Component
 {
     use HasInvoiceItems;
 
+    public ?int $contact_id = null;
+
+    public ?string $number = null;
+
+    public ?string $variable_symbol = null;
+
     public ?string $issued_at = null;
 
     public ?string $due_at = null;
@@ -20,8 +26,8 @@ final class Create extends Component
     {
         $this->addItem();
 
-        $this->issued_at = now()->toDateString();
-        $this->due_at = now()->addWeek()->toDateString();
+        $this->issued_at = now()->format('d. m. Y');
+        $this->due_at = now()->addWeek()->format('d. m. Y');
     }
 
     public function save(): void
