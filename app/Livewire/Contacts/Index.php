@@ -13,6 +13,19 @@ final class Index extends Component
 {
     use WithPagination;
 
+    public function delete(int $id): void
+    {
+        $contact = Contact::query()->find($id);
+
+        if (! $contact) {
+            return;
+        }
+
+        $this->authorize('delete', $contact);
+
+        $contact->delete();
+    }
+
     public function render(): View
     {
         return view('livewire.contacts.index', [

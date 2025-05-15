@@ -34,7 +34,8 @@ return new class extends Migration
             $table->string('customer_phone')->nullable();
             $table->string('customer_email')->nullable();
             $table->text('note')->nullable();
-            $table->foreignId('contact_id')->index()->nullable()->constrained('contacts')->nullOnDelete();
+            $table->foreignId('contact_id')->index()->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

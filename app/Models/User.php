@@ -4,11 +4,30 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @property-read int $id
+ * @property string $email
+ * @property Carbon|null $email_verified_at
+ * @property string|null $company_id
+ * @property string|null $vat_id
+ * @property string|null $billing_company
+ * @property string|null $billing_address
+ * @property string|null $billing_city
+ * @property string|null $billing_country
+ * @property string|null $billing_zip
+ * @property Carbon $updated_at
+ * @property Carbon $created_at
+ * @property-read Collection<int, Contact> $contacts
+ * @property-read Collection<int, Invoice> $invoices
+ */
 final class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
@@ -29,6 +48,18 @@ final class User extends Authenticatable
     public function avatarUrl(): string
     {
         return sprintf('https://api.dicebear.com/9.x/thumbs/svg?seed=%s', $this->email);
+    }
+
+    /** @return HasMany<Contact, $this> */
+    public function contacts(): HasMany
+    {
+        return $this->hasMany(Contact::class);
+    }
+
+    /** @return HasMany<Invoice, $this> */
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
     }
 
     /**
