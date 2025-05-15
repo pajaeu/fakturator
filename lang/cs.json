@@ -259,5 +259,6 @@
 	"ZIP": "PSČ",
 	"Country": "Země",
 	"Create contact": "Vytvořit kontakt",
-	"Enter the company ID, other data will be automatically filled in from the ARES database": "Zadejte IČO, ostatní údaje se automaticky doplní z databáze ARES"
+	"Enter the company ID, other data will be automatically filled in from the ARES database": "Zadejte IČO, ostatní údaje se automaticky doplní z databáze ARES",
+	"Back": "Zpět"
 }

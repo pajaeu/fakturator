@@ -9,10 +9,10 @@
             <a href="" class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Settings') }}</a>
         </div>
         <div class="ms-auto flex items-center gap-4">
-            <a href="" class="flex items-center gap-2 py-2 px-4 rounded-full text-sm text-blue-600 font-medium border border-blue-600 hover:text-white hover:bg-blue-600 transition-colors">
+            <x-button href="" :link="true" variant="outline">
                 <x-icons.plus class="size-4"/>
                 <span>{{ __('New bill') }}</span>
-            </a>
+            </x-button>
             <div class="size-10 rounded-full border border-gray-200 hover:border-blue-600 transition-colors overflow-hidden">
                 <img src="{{ auth()->user()->avatarUrl() }}" alt="Avatar" class="size-full">
             </div>
