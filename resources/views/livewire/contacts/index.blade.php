@@ -2,7 +2,7 @@
     <x-header>
         <x-slot:title>{{ __('Contacts') }}</x-slot:title>
         <x-slot:buttons>
-            <x-button href="{{ route('contacts.create') }}" :link="true">
+            <x-button href="{{ route('contacts.create') }}" :link="true" wire:navigate>
                 <x-icons.plus class="size-4"/>
                 <span>{{ __('New contact') }}</span>
             </x-button>

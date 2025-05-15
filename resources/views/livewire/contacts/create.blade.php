@@ -2,7 +2,7 @@
     <x-header>
         <x-slot:title>{{ __('New contact') }}</x-slot:title>
         <x-slot:buttons>
-            <x-button href="{{ route('contacts.index') }}" :link="true" variant="outline">
+            <x-button href="{{ route('contacts.index') }}" :link="true" variant="outline" wire:navigate>
                 <x-icons.arrow-back class="size-4"/>
                 <span>{{ __('Back') }}</span>
             </x-button>
