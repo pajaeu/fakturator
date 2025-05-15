@@ -99,23 +99,30 @@ final class Create extends Component
             'customer_email' => Rule::when($this->customer_email !== null, [
                 'email',
             ]),
-			'number' => [
-				'required',
-				'string'
-			],
-			'variable_symbol' => [
-				'required',
-				'string'
-			],
-			'issued_at' => [
-				'required',
-				'date_format:d. m. Y',
-			],
-			'due_at' => [
-				'required',
-				'date_format:d. m. Y',
-			]
+            'number' => [
+                'required',
+                'string',
+            ],
+            'variable_symbol' => [
+                'required',
+                'string',
+            ],
+            'issued_at' => [
+                'required',
+                'date_format:d. m. Y',
+            ],
+            'due_at' => [
+                'required',
+                'date_format:d. m. Y',
+            ],
         ];
+    }
+
+    public function updated(string $property): void
+    {
+        $this->validateOnly($property);
+
+        $this->resetErrorBag($property);
     }
 
     public function save(): void
