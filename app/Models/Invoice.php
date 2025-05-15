@@ -13,7 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * @property-read int $id
  * @property string $number
- * @property Carbon $billed_at
+ * @property string|null $variable_symbol
+ * @property Carbon $issued_at
  * @property Carbon $due_at
  * @property float $total
  * @property string $supplier_company
@@ -42,7 +43,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 final class Invoice extends Model
 {
     protected $casts = [
-        'billed_at' => 'date',
+        'issued_at' => 'date',
         'due_at' => 'date',
         'total' => 'float',
     ];

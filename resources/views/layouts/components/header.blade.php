@@ -4,12 +4,12 @@
             <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-auto h-7">
         </a>
         <div class="ms-6 flex items-center gap-1">
-            <a href="" class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Invoices') }}</a>
+            <a href="{{ route('invoices.index') }}" class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Invoices') }}</a>
             <a href="{{ route('contacts.index') }}" class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Contacts') }}</a>
             <a href="" class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Settings') }}</a>
         </div>
         <div class="ms-auto flex items-center gap-4">
-            <x-button href="" :link="true" variant="outline">
+            <x-button href="{{ route('invoices.create') }}" :link="true" variant="outline">
                 <x-icons.plus class="size-4"/>
                 <span>{{ __('New bill') }}</span>
             </x-button>

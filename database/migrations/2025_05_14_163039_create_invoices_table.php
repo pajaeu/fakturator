@@ -16,9 +16,13 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->string('number')->index();
-            $table->date('billed_at');
+            $table->string('variable_symbol')->nullable();
+            $table->date('issued_at');
             $table->date('due_at');
             $table->double('total');
+            $table->double('total_with_vat');
+            $table->string('currency_code')->default('CZK');
+            $table->string('currency_symbol')->default('Kč');
             $table->string('supplier_company');
             $table->string('supplier_address');
             $table->string('supplier_city');

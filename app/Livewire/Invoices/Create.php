@@ -12,6 +12,16 @@ final class Create extends Component
 {
     use HasInvoiceItems;
 
+    public function mount(): void
+    {
+        $this->addItem();
+    }
+
+    public function save(): void
+    {
+        $this->validateItems();
+    }
+
     public function render(): View
     {
         return view('livewire.invoices.create');
