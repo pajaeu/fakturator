@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\Concerns\UsesCurrentUser;
+use App\Models\Scopes\CurrentUserScope;
+use Illuminate\Database\Eloquent\Attributes\ScopedBy;
 use Illuminate\Database\Eloquent\Model;
 
-final class Invoice extends Model
-{
-    use UsesCurrentUser;
-}
+#[ScopedBy(CurrentUserScope::class)]
+final class Invoice extends Model {}
