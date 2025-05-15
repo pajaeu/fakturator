@@ -14,7 +14,7 @@ final class Create extends Component
     #[Validate('required|digits:8|unique:contacts,company_id')]
     public ?string $company_id = null;
 
-    #[Validate('string|min:10|max:12')]
+    #[Validate('string|min:10|max:12|nullable')]
     public ?string $vat_id = null;
 
     #[Validate('required|string|min:6|max:255')]
