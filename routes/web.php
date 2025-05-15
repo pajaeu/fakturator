@@ -7,5 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth']], function () {
     Route::view('/', 'dashboard')->name('dashboard');
 
+    Route::get('/contacts', App\Livewire\Contacts\Index::class)->name('contacts.index');
     Route::get('/contact/new', App\Livewire\Contacts\Create::class)->name('contacts.create');
 });
