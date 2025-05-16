@@ -18,19 +18,19 @@ final class Create extends Component
     use HasInvoiceItems;
     use ResetsValidationAfterUpdate;
 
-    public ?string $customer_company_id = null;
+    public string $customer_company_id = '';
 
     public ?string $customer_vat_id = null;
 
-    public ?string $customer_company = null;
+    public string $customer_company = '';
 
-    public ?string $customer_address = null;
+    public string $customer_address = '';
 
-    public ?string $customer_city = null;
+    public string $customer_city = '';
 
-    public ?string $customer_country = null;
+    public string $customer_country = '';
 
-    public ?string $customer_zip = null;
+    public string $customer_zip = '';
 
     public ?string $customer_phone = null;
 
@@ -38,13 +38,13 @@ final class Create extends Component
 
     public ?int $contact_id = null;
 
-    public ?string $number = null;
+    public string $number = '';
 
-    public ?string $variable_symbol = null;
+    public string $variable_symbol = '';
 
-    public string $issued_at;
+    public string $issued_at = '';
 
-    public string $due_at;
+    public string $due_at = '';
 
     public function mount(): void
     {

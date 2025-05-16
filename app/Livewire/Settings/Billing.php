@@ -16,32 +16,32 @@ final class Billing extends Component
 
     public User $user;
 
-    public ?string $company_id = null;
+    public string $company_id = '';
 
     public ?string $vat_id = null;
 
-    public ?string $billing_company = null;
+    public string $billing_company = '';
 
-    public ?string $billing_address = null;
+    public string $billing_address = '';
 
-    public ?string $billing_city = null;
+    public string $billing_city = '';
 
-    public ?string $billing_country = null;
+    public string $billing_country = '';
 
-    public ?string $billing_zip = null;
+    public string $billing_zip = '';
 
     public function mount(): void
     {
         /** @var User $user */
         $user = auth()->user();
 
-        $this->company_id = $user->company_id;
+        $this->company_id = $user->company_id ?? '';
         $this->vat_id = $user->vat_id;
-        $this->billing_company = $user->billing_company;
-        $this->billing_address = $user->billing_address;
-        $this->billing_city = $user->billing_city;
-        $this->billing_country = $user->billing_country;
-        $this->billing_zip = $user->billing_zip;
+        $this->billing_company = $user->billing_company ?? '';
+        $this->billing_address = $user->billing_address ?? '';
+        $this->billing_city = $user->billing_city ?? '';
+        $this->billing_country = $user->billing_country ?? '';
+        $this->billing_zip = $user->billing_zip ?? '';
         $this->user = $user;
     }
 

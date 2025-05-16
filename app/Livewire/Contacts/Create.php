@@ -14,19 +14,19 @@ final class Create extends Component
 {
     use ResetsValidationAfterUpdate;
 
-    public ?string $company_id = null;
+    public string $company_id = '';
 
     public ?string $vat_id = null;
 
-    public ?string $name = null;
+    public string $name = '';
 
-    public ?string $address = null;
+    public string $address = '';
 
-    public ?string $city = null;
+    public string $city = '';
 
-    public ?string $country = null;
+    public string $country = '';
 
-    public ?string $zip = null;
+    public string $zip = '';
 
     public ?string $phone = null;
 
