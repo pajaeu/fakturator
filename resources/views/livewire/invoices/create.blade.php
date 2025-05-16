@@ -22,13 +22,15 @@
                             <div class="mb-4">
                                 <x-form.input wire:model.live.debounce.250ms="contact_search" placeholder="{{ __('Search in contacts') }}"/>
                             </div>
-                            <div wire:loading wire:target="loadContacts">
-                                načítám
+                            <div wire:loading.flex wire:target="loadContacts">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto size-10 text-blue-600 animate-spin" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 22c5.421 0 10-4.579 10-10h-2c0 4.337-3.663 8-8 8s-8-3.663-8-8c0-4.336 3.663-8 8-8V2C6.579 2 2 6.58 2 12c0 5.421 4.579 10 10 10z"></path>
+                                </svg>
                             </div>
                             @if($contacts)
-                                <div wire:loading.remove wire:target="loadContacts" class="rounded border border-gray-200 overflow-hidden max-h-64 overflow-y-auto">
+                                <div wire:loading.remove wire:target="loadContacts" class="rounded-lg border border-gray-200 overflow-hidden max-h-64 overflow-y-auto">
                                     @forelse($contacts as $contact)
-                                        <div wire:click="fillFieldsFromContact({{ $contact->id }})" class="cursor-pointer py-2 px-4 border-b last:border-b-0 border-gray-200 hover:bg-gray-50 transition-colors">
+                                        <div wire:click="fillFieldsFromContact({{ $contact->id }})" class="cursor-pointer py-2 px-4 border-b last:border-b-0 border-gray-200 hover:text-blue-600 hover:bg-gray-50 transition-colors">
                                             <div class="mb-1">{{ $contact->name }}</div>
                                             <div class="text-xs text-gray-500">{{ __('Company ID') }}: {{ $contact->company_id }}</div>
                                         </div>
