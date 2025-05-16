@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\Country;
 use Carbon\Carbon;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Collection;
@@ -21,7 +22,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $billing_company
  * @property string|null $billing_address
  * @property string|null $billing_city
- * @property string|null $billing_country
+ * @property Country|null $billing_country
  * @property string|null $billing_zip
  * @property Carbon $updated_at
  * @property Carbon $created_at
@@ -72,6 +73,7 @@ final class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'billing_country' => Country::class,
         ];
     }
 }

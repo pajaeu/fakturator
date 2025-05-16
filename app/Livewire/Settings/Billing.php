@@ -40,7 +40,7 @@ final class Billing extends Component
         $this->billing_company = $user->billing_company ?? '';
         $this->billing_address = $user->billing_address ?? '';
         $this->billing_city = $user->billing_city ?? '';
-        $this->billing_country = $user->billing_country ?? '';
+        $this->billing_country = $user->billing_country->value ?? '';
         $this->billing_zip = $user->billing_zip ?? '';
         $this->user = $user;
     }
@@ -49,12 +49,16 @@ final class Billing extends Component
     public function rules(): array
     {
         return [
-            'company_id' => 'required|digits:8|unique:contacts,company_id,NULL,id,user_id,'.auth()->id(),
+            'company_id' => [
+                'required',
+                'digits:8',
+                Rule::unique('users', 'company_id')->ignore($this->user->id),
+            ],
             'vat_id' => Rule::when($this->vat_id !== null, 'string|min:10|max:12'),
             'billing_company' => 'required|string|min:6|max:255',
             'billing_address' => 'required|string|min:6|max:255',
             'billing_city' => 'required|string|min:6|max:255',
-            'billing_country' => 'required|string|min:6|max:255',
+            'billing_country' => 'required|string|size:2',
             'billing_zip' => 'required|string|min:5|max:255',
         ];
     }

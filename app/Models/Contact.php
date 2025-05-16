@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Enums\Country;
 use App\Models\Scopes\CurrentUserScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
@@ -17,7 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $name
  * @property string $address
  * @property string $city
- * @property string $country
+ * @property Country $country
  * @property string $zip
  * @property string|null $phone
  * @property string|null $email
@@ -29,6 +30,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[ScopedBy(CurrentUserScope::class)]
 final class Contact extends Model
 {
+    protected $casts = [
+        'country' => Country::class,
+    ];
+
     /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Contacts;
 
+use App\Enums\Country;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
 use Illuminate\Validation\Rule;
@@ -32,16 +33,21 @@ final class Create extends Component
 
     public ?string $email = null;
 
+    public function mount(): void
+    {
+        $this->country = Country::CZECH->value;
+    }
+
     /** @return array<string, mixed> */
     public function rules(): array
     {
         return [
-            'company_id' => 'required|digits:8|unique:contacts,company_id,NULL,id,user_id,'.auth()->id(),
+            'company_id' => 'required|digits:8|unique:contacts,company_id,NULL,id',
             'vat_id' => Rule::when($this->vat_id !== null, 'string|min:10|max:12'),
             'name' => 'required|string|min:6|max:255',
             'address' => 'required|string|min:6|max:255',
             'city' => 'required|string|min:6|max:255',
-            'country' => 'required|string|min:6|max:255',
+            'country' => 'required|string|size:2',
             'zip' => 'required|string|min:5|max:255',
             'phone' => Rule::when($this->phone !== null, 'string|min:6'),
             'email' => Rule::when($this->email !== null, 'email'),

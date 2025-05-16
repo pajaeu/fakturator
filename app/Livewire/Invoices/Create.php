@@ -63,7 +63,7 @@ final class Create extends Component
             'customer_company' => 'required|string|min:6|max:255',
             'customer_address' => 'required|string|min:6|max:255',
             'customer_city' => 'required|string|min:6|max:255',
-            'customer_country' => 'required|string|min:6|max:255',
+            'customer_country' => 'required|string|size:2',
             'customer_zip' => 'required|string|min:5|max:255',
             'customer_phone' => Rule::when($this->customer_phone !== null, 'string|min:6'),
             'customer_email' => Rule::when($this->customer_email !== null, 'email'),

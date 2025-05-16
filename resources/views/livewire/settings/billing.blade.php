@@ -50,7 +50,7 @@
             <div class="flex gap-4 mb-4">
                 <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Country') }}</label>
                 <div class="w-full">
-                    <x-form.input wire:model.blur="billing_country" @class(['border-red-500' => $errors->has('billing_country')])/>
+                    <x-form.country-select property="billing_country" @class(['border-red-500' => $errors->has('billing_country')])/>
                     <x-form.input-error name="billing_country"/>
                 </div>
             </div>
