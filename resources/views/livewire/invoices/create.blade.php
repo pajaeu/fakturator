@@ -9,7 +9,17 @@
         </x-slot:buttons>
     </x-header>
     <x-card class="mb-5">
-        <div class="mb-4 text-sm text-medium text-gray-600">{{ __('Customer') }}</div>
+        <div class="flex items-center mb-4">
+            <div class="text-sm text-medium text-gray-600">{{ __('Customer') }}</div>
+            <div class="ms-auto">
+                @if($contact_id)
+                    <x-button wire:click="resetContactId" variant="outline-gray">
+                        <span>{{ __('Assigned contact') }} (id: {{ $contact_id }})</span>
+                        <x-icons.x class="size-4 text-blue-600 group-hover:text-red-500 transition-colors"/>
+                    </x-button>
+                @endif
+            </div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-20">
             <div>
                 <div class="flex gap-2 mb-4">
@@ -35,9 +45,14 @@
                             @if($contacts)
                                 <div wire:loading.remove wire:target="loadContacts" class="rounded-lg border border-gray-200 overflow-hidden max-h-64 overflow-y-auto">
                                     @forelse($contacts as $contact)
-                                        <div wire:click="fillFieldsFromContact({{ $contact->id }})" class="cursor-pointer py-2 px-4 border-b last:border-b-0 border-gray-200 hover:text-blue-600 hover:bg-gray-50 transition-colors">
+                                        <div wire:click="fillFieldsFromContact({{ $contact->id }})" class="relative cursor-pointer py-2 px-4 border-b last:border-b-0 border-gray-200 hover:text-blue-600 hover:bg-gray-50 transition-colors">
                                             <div class="mb-1">{{ $contact->name }}</div>
                                             <div class="text-xs text-gray-500">{{ __('Company ID') }}: {{ $contact->company_id }}</div>
+                                            @if($contact->id === $contact_id)
+                                                <div class="absolute right-4 top-1/2 -translate-y-1/2">
+                                                    <x-icons.user-rounded class="size-5 text-green-600"/>
+                                                </div>
+                                            @endif
                                         </div>
                                     @empty
                                         <div class="p-4 text-gray-500">{{ __('No contact found') }}</div>

@@ -9,33 +9,39 @@
         </x-slot:buttons>
     </x-header>
     <x-table card="true">
-        <x-slot:head>
-            <x-table.row>
-                <x-table.head width="10%">ID</x-table.head>
-                <x-table.head>{{ __('Name') }}</x-table.head>
-                <x-table.head></x-table.head>
-            </x-table.row>
-        </x-slot:head>
-        <x-slot:body>
-            @foreach($contacts as $contact)
-                <x-table.row wire:key="{{ $contact->id }}">
-                    <x-table.column>{{ $contact->id }}</x-table.column>
-                    <x-table.column>
-                        <a href="" class="block">
-                            <div class="mb-1">{{ $contact->name }}</div>
-                            <div class="text-xs text-gray-500">{{ __('Company ID') }}: {{ $contact->company_id }}</div>
-                        </a>
-                    </x-table.column>
-                    <x-table.column align="right">
-                        <x-table.action-dropdown>
-                            <x-slot:items>
-                                <x-table.action-dropdown.item>{{ __('Edit') }}</x-table.action-dropdown.item>
-                                <x-table.action-dropdown.item wire:click="delete({{ $contact->id }})" wire:confirm="{{ __('Are you sure you want to delete this record?') }}">{{ __('Delete') }}</x-table.action-dropdown.item>
-                            </x-slot:items>
-                        </x-table.action-dropdown>
-                    </x-table.column>
+        @if($contacts->isNotEmpty())
+            <x-slot:head>
+                <x-table.row>
+                    <x-table.head width="10%">ID</x-table.head>
+                    <x-table.head>{{ __('Name') }}</x-table.head>
+                    <x-table.head></x-table.head>
                 </x-table.row>
-            @endforeach
-        </x-slot:body>
+            </x-slot:head>
+            <x-slot:body>
+                @foreach($contacts as $contact)
+                    <x-table.row wire:key="{{ $contact->id }}">
+                        <x-table.column>{{ $contact->id }}</x-table.column>
+                        <x-table.column>
+                            <a href="" class="block">
+                                <div class="mb-1">{{ $contact->name }}</div>
+                                <div class="text-xs text-gray-500">{{ __('Company ID') }}: {{ $contact->company_id }}</div>
+                            </a>
+                        </x-table.column>
+                        <x-table.column align="right">
+                            <x-table.action-dropdown>
+                                <x-slot:items>
+                                    <x-table.action-dropdown.item>{{ __('Edit') }}</x-table.action-dropdown.item>
+                                    <x-table.action-dropdown.item wire:click="delete({{ $contact->id }})" wire:confirm="{{ __('Are you sure you want to delete this record?') }}">{{ __('Delete') }}</x-table.action-dropdown.item>
+                                </x-slot:items>
+                            </x-table.action-dropdown>
+                        </x-table.column>
+                    </x-table.row>
+                @endforeach
+            </x-slot:body>
+        @else
+            <x-slot:body>
+                <x-table.empty-state/>
+            </x-slot:body>
+        @endif
     </x-table>
 </div>
