@@ -8,6 +8,8 @@ use App\Enums\Currency;
 
 final readonly class Price
 {
+    public const Currency DEFAULT_CURRENCY = Currency::CZK;
+
     public function __construct(
         private float $amount,
         private Currency $currency
