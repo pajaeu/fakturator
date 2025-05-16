@@ -13,6 +13,21 @@ final class Index extends Component
 {
     use WithPagination;
 
+    public bool $selectAllContacts = false;
+
+    /** @var array<mixed> */
+    public array $selectedContacts = [];
+
+    public function updatedSelectAllContacts(): void
+    {
+        $this->selectedContacts = $this->selectAllContacts ? Contact::query()->pluck('id')->toArray() : [];
+    }
+
+    public function updatedSelectedContacts(): void
+    {
+        $this->selectAllContacts = false;
+    }
+
     public function delete(int $id): void
     {
         $contact = Contact::query()->find($id);
@@ -24,6 +39,18 @@ final class Index extends Component
         $this->authorize('delete', $contact);
 
         $contact->delete();
+    }
+
+    public function bulkDelete(): void
+    {
+        Contact::query()->whereIn('id', $this->selectedContacts)->each(function ($contact): void {
+            $this->authorize('delete', $contact);
+
+            $contact->delete();
+        });
+
+        $this->selectAllContacts = false;
+        $this->selectedContacts = [];
     }
 
     public function render(): View

@@ -15,6 +15,7 @@ final class Index extends Component
 
     public bool $selectAllInvoices = false;
 
+    /** @var array<mixed> */
     public array $selectedInvoices = [];
 
     public function updatedSelectAllInvoices(): void
