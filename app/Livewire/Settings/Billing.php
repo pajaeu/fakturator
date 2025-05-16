@@ -82,9 +82,9 @@ final class Billing extends Component
                 Rule::unique('users')->ignore($this->user->id),
             ],
             'vat_id' => Rule::when($this->vat_id !== null, 'string|min:10|max:12'),
-            'billing_company' => 'required|string|min:6|max:255',
-            'billing_address' => 'required|string|min:6|max:255',
-            'billing_city' => 'required|string|min:6|max:255',
+            'billing_company' => 'required|string|min:3|max:255',
+            'billing_address' => 'required|string|min:3|max:255',
+            'billing_city' => 'required|string|min:2|max:255',
             'billing_country' => 'required|string|size:2',
             'billing_zip' => 'required|string|min:5|max:255',
         ];
