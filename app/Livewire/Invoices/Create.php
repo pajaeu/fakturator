@@ -153,6 +153,8 @@ final class Create extends Component
 
         $this->validateItems();
 
+		$this->recalculateTotals();
+
         /** @var User $user */
         $user = auth()->user();
 
