@@ -24,8 +24,8 @@
         <a href="{{ route('login') }}" class="block mt-3 text-center text-sm text-gray-500 underline hover:text-gray-600 transition-colors">{{ __('Have an account? Log In here.') }}</a>
         <div class="mt-6 flex justify-center items-center gap-2">
             @foreach(config('app.available_locales') as $locale)
-                <a href="{{ route('locale.switch', ['locale' => $locale]) }}" wire:navigate class="size-7 rounded-full overflow-hidden @if(app()->getLocale() !== $locale) opacity-30 hover:opacity-80 @endif transition-all">
-                    <img src="{{ asset("assets/images/locales/{$locale}.png") }}" alt="{{ $locale }}" class="size-6">
+                <a href="{{ route('locale.switch', ['locale' => $locale]) }}" wire:navigate class="size-6 rounded-full overflow-hidden @if(app()->getLocale() !== $locale) opacity-30 hover:opacity-80 @endif transition-all">
+                    <img src="{{ asset("assets/images/locales/{$locale}.png") }}" alt="{{ $locale }}" class="size-full">
                 </a>
             @endforeach
         </div>

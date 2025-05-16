@@ -31,8 +31,8 @@
                     </form>
                     <div class="mt-3 flex items-center gap-3 px-3">
                         @foreach(config('app.available_locales') as $locale)
-                            <a href="{{ route('locale.switch', ['locale' => $locale]) }}" wire:navigate class="size-7 rounded-full border-2 overflow-hidden @if(app()->getLocale() === $locale) border-blue-600 @else border-transparent hover:border-gray-200 @endif transition-colors">
-                                <img src="{{ asset("assets/images/locales/{$locale}.png") }}" alt="{{ $locale }}" class="size-6">
+                            <a href="{{ route('locale.switch', ['locale' => $locale]) }}" wire:navigate class="size-6 rounded-full overflow-hidden @if(app()->getLocale() !== $locale) opacity-30 hover:opacity-80 @endif transition-all">
+                                <img src="{{ asset("assets/images/locales/{$locale}.png") }}" alt="{{ $locale }}" class="size-full">
                             </a>
                         @endforeach
                     </div>
