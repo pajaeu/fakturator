@@ -41,8 +41,8 @@ final class Ares
 
         $street = $headquarters['nazevUlice'] ?? $headquarters['nazevCastiObce'] ?? '';
 
-        $houseNumber = is_string($headquarters['cisloDomovni']) ? $headquarters['cisloDomovni'] : '';
-        $orientationNumber = is_string($headquarters['cisloOrientacni'] ?? null) ? $headquarters['cisloOrientacni'] : false;
+        $houseNumber = is_numeric($headquarters['cisloDomovni']) ? (string) $headquarters['cisloDomovni'] : '';
+        $orientationNumber = is_numeric($headquarters['cisloOrientacni'] ?? null) ? (string) $headquarters['cisloOrientacni'] : false;
 
         $houseNumber = $orientationNumber ? $houseNumber.'/'.$orientationNumber : $houseNumber;
 
