@@ -13,6 +13,20 @@ final class Index extends Component
 {
     use WithPagination;
 
+    public bool $selectAllInvoices = false;
+
+    public array $selectedInvoices = [];
+
+    public function updatedSelectAllInvoices(): void
+    {
+        $this->selectedInvoices = $this->selectAllInvoices ? Invoice::query()->pluck('id')->toArray() : [];
+    }
+
+    public function updatedSelectedInvoices(): void
+    {
+        $this->selectAllInvoices = false;
+    }
+
     public function delete(int $id): void
     {
         $invoice = Invoice::query()->find($id);
@@ -24,6 +38,18 @@ final class Index extends Component
         $this->authorize('delete', $invoice);
 
         $invoice->delete();
+    }
+
+    public function bulkDelete(): void
+    {
+        Invoice::query()->whereIn('id', $this->selectedInvoices)->each(function ($invoice): void {
+            $this->authorize('delete', $invoice);
+
+            $invoice->delete();
+        });
+
+        $this->selectAllInvoices = false;
+        $this->selectedInvoices = [];
     }
 
     public function render(): View
