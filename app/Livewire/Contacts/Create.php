@@ -6,7 +6,6 @@ namespace App\Livewire\Contacts;
 
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -37,53 +36,15 @@ final class Create extends Component
     public function rules(): array
     {
         return [
-            'company_id' => [
-                'required',
-                'digits:8',
-                Rule::unique('contacts')->where(fn (Builder $query) => $query->where('user_id', auth()->id())),
-            ],
-            'vat_id' => Rule::when($this->vat_id !== null, [
-                'string',
-                'min:10',
-                'max:12',
-            ]),
-            'name' => [
-                'required',
-                'string',
-                'min:6',
-                'max:255',
-            ],
-            'address' => [
-                'required',
-                'string',
-                'min:6',
-                'max:255',
-            ],
-            'city' => [
-                'required',
-                'string',
-                'min:6',
-                'max:255',
-            ],
-            'country' => [
-                'required',
-                'string',
-                'min:6',
-                'max:255',
-            ],
-            'zip' => [
-                'required',
-                'string',
-                'min:5',
-                'max:255',
-            ],
-            'phone' => Rule::when($this->phone !== null, [
-                'string',
-                'min:6',
-            ]),
-            'email' => Rule::when($this->email !== null, [
-                'email',
-            ]),
+            'company_id' => 'required|digits:8|unique:contacts,company_id,NULL,id,user_id,'.auth()->id(),
+            'vat_id' => Rule::when($this->vat_id !== null, 'string|min:10|max:12'),
+            'name' => 'required|string|min:6|max:255',
+            'address' => 'required|string|min:6|max:255',
+            'city' => 'required|string|min:6|max:255',
+            'country' => 'required|string|min:6|max:255',
+            'zip' => 'required|string|min:5|max:255',
+            'phone' => Rule::when($this->phone !== null, 'string|min:6'),
+            'email' => Rule::when($this->email !== null, 'email'),
         ];
     }
 
