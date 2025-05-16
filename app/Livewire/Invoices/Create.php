@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Invoices;
 
 use App\Livewire\Concerns\HasInvoiceItems;
+use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -12,6 +13,7 @@ use Livewire\Component;
 final class Create extends Component
 {
     use HasInvoiceItems;
+    use ResetsValidationAfterUpdate;
 
     public ?string $customer_company_id = null;
 
@@ -116,13 +118,6 @@ final class Create extends Component
                 'date_format:d. m. Y',
             ],
         ];
-    }
-
-    public function updated(string $property): void
-    {
-        $this->validateOnly($property);
-
-        $this->resetErrorBag($property);
     }
 
     public function save(): void

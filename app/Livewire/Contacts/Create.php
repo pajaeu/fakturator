@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Contacts;
 
+use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Validation\Rule;
@@ -12,6 +13,8 @@ use Livewire\Component;
 
 final class Create extends Component
 {
+    use ResetsValidationAfterUpdate;
+
     public ?string $company_id = null;
 
     public ?string $vat_id = null;
@@ -82,13 +85,6 @@ final class Create extends Component
                 'email',
             ]),
         ];
-    }
-
-    public function updated(string $property): void
-    {
-        $this->validateOnly($property);
-
-        $this->resetErrorBag($property);
     }
 
     public function updatedCompanyId(): void
