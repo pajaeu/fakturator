@@ -61,7 +61,7 @@ trait HasInvoiceItems
 
         $this->recalculateTotals();
 
-        $this->resetValidation('items.*');
+        $this->resetErrorBag('items.*');
     }
 
     /**
@@ -83,7 +83,7 @@ trait HasInvoiceItems
 
         $this->items = array_values($reorderedItems);
 
-        $this->resetValidation('items.*');
+        $this->resetErrorBag('items.*');
     }
 
     private function recalculateTotals(): void
