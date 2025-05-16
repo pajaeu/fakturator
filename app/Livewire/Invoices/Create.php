@@ -50,7 +50,6 @@ final class Create extends Component
 
     public string $due_at = '';
 
-    #[Url(except: '')]
     public string $contact_search = '';
 
     /** @var Collection<int, Contact> */
