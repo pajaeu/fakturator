@@ -18,7 +18,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('billing', App\Livewire\Settings\Billing::class)->name('billing');
     });
 
-    Route::get('/locale/{locale}/switch', App\Http\Controllers\SwitchLocaleController::class)->name('locale.switch');
-
     Route::post('/logout', App\Http\Controllers\Auth\LogoutController::class)->name('logout');
 });
+
+Route::get('/locale/{locale}/switch', App\Http\Controllers\SwitchLocaleController::class)->name('locale.switch');
