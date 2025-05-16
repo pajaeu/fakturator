@@ -1,6 +1,12 @@
 <div>
     <x-header>
         <x-slot:title>{{ __('Billing settings') }}</x-slot:title>
+        <x-slot:buttons>
+            <x-button href="{{ route('settings.index') }}" :link="true" variant="outline" wire:navigate>
+                <x-icons.arrow-back class="size-4"/>
+                <span>{{ __('Back') }}</span>
+            </x-button>
+        </x-slot:buttons>
     </x-header>
     <x-card>
         <div class="mx-auto max-w-3xl">
