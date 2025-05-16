@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace App\Support;
 
+use App\Enums\Currency;
+
 final readonly class Price
 {
     public function __construct(
         private float $amount,
-        private string $currencySymbol
+        private Currency $currency
     ) {}
 
     public function format(): string
     {
-        return number_format($this->amount, 2, ',', ' ').' '.$this->currencySymbol;
+        return $this->currency->format($this->amount);
     }
 }

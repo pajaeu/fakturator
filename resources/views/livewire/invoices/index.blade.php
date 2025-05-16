@@ -24,7 +24,7 @@
                     <x-table.column>{{ $invoice->number }}</x-table.column>
                     <x-table.column>{{ $invoice->customer_company }}</x-table.column>
                     <x-table.column align="right">{{ $invoice->issued_at->format('d. m. Y') }}</x-table.column>
-                    <x-table.column align="right">{{ price($invoice->total, $invoice->currency_symbol)->format() }}</x-table.column>
+                    <x-table.column align="right">{{ price($invoice->total, $invoice->currency)->format() }}</x-table.column>
                     <x-table.column align="right">
                         <x-table.action-dropdown>
                             <x-slot:items>

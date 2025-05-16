@@ -37,7 +37,7 @@
                     </div>
                     <div class="w-20">
                         @php($errorKey = "items.$index.quantity")
-                        <x-form.input type="number" wire:model.blur="items.{{ $index }}.quantity" @class(['border-red-500' => $errors->has($errorKey)])/>
+                        <x-form.input type="number" wire:model.blur="items.{{ $index }}.quantity" min="1" @class(['border-red-500' => $errors->has($errorKey)])/>
                     </div>
                     <div class="w-20">
                         @php($errorKey = "items.$index.unit")
@@ -56,7 +56,7 @@
                     <div class="flex-1 text-end">
                         <div class="py-2 px-4 rounded-lg border border-gray-300 bg-gray-50">
                             <input type="hidden" wire:model="items.{{ $index }}.total">
-                            <span>{{ price((float) $item['total'], 'Kč')->format() }}</span>
+                            <span>{{ price((float) $item['total'], $currency)->format() }}</span>
                         </div>
                     </div>
                     <div class="w-10">

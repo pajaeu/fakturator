@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\Country;
+use App\Enums\Currency;
 use App\Models\Scopes\CurrentUserScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
@@ -18,6 +19,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $issued_at
  * @property Carbon $due_at
  * @property float $total
+ * @property float $total_with_vat
+ * @property Currency $currency
  * @property string $supplier_company
  * @property string $supplier_company_id
  * @property string|null $supplier_vat_id
@@ -51,6 +54,7 @@ final class Invoice extends Model
         'due_at' => 'date',
         'total' => 'float',
         'items' => 'array',
+        'currency' => Currency::class,
         'supplier_country' => Country::class,
         'customer_country' => Country::class,
     ];

@@ -110,7 +110,7 @@
                 <div class="flex gap-4">
                     <label class="w-full md:pt-2 md:w-1/3">{{ __('Country') }}</label>
                     <div class="w-full">
-                        <x-form.country-select property="customer_country" @class(['border-red-500' => $errors->has('customer_country')])/>
+                        <x-form.country-select wire:model.blur="customer_country" @class(['border-red-500' => $errors->has('customer_country')])/>
                         <x-form.input-error name="customer_country"/>
                     </div>
                 </div>
@@ -154,10 +154,11 @@
                         <x-form.input-error name="due_at"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
-                    <label class="w-full md:pt-2 md:w-1/3"></label>
+                <div class="flex gap-4">
+                    <label class="w-full md:pt-2 md:w-1/3">{{ __('Currency') }}</label>
                     <div class="w-full">
-
+                        <x-form.currency-select wire:model.live="currency" @class(['border-red-500' => $errors->has('currency')])/>
+                        <x-form.input-error name="currency"/>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,7 @@ final class Ares
      */
     public function findByCompanyId(string $companyId): array
     {
-        if (empty($companyId)) {
+        if ($companyId === '' || $companyId === '0') {
             throw new InvalidArgumentException('Company ID cannot be empty');
         }
 

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Livewire\Settings;
 
+use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\User;
+use Exception;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -45,6 +47,31 @@ final class Billing extends Component
         $this->user = $user;
     }
 
+    public function updatedCompanyId(string $value): void
+    {
+        try {
+            $data = GetCompanyDetailsFromCompanyId::handle($value);
+
+            $this->company_id = $data['company_id'];
+            $this->vat_id = $data['vat_id'];
+            $this->billing_company = $data['company'];
+            $this->billing_address = $data['address'];
+            $this->billing_city = $data['city'];
+            $this->billing_country = $data['country'];
+            $this->billing_zip = $data['zip'];
+        } catch (Exception) {
+            $this->addError('company_id', __('Company details could not be found.'));
+        }
+    }
+
+    public function save(): void
+    {
+        /** @var array<string, mixed> $data */
+        $data = $this->validate();
+
+        $this->user->update($data);
+    }
+
     /** @return array<string, mixed> */
     public function rules(): array
     {
@@ -61,14 +88,6 @@ final class Billing extends Component
             'billing_country' => 'required|string|size:2',
             'billing_zip' => 'required|string|min:5|max:255',
         ];
-    }
-
-    public function save(): void
-    {
-        /** @var array<string, mixed> $data */
-        $data = $this->validate();
-
-        $this->user->update($data);
     }
 
     public function render(): View

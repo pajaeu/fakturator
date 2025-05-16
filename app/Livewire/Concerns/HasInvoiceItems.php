@@ -95,6 +95,10 @@ trait HasInvoiceItems
             $unitPrice = (float) $item['unit_price'];
             $vatRate = (int) $item['vat_rate'];
 
+            if ($quantity < 1) {
+                $quantity = 1;
+            }
+
             $item['total'] = $quantity * $unitPrice;
             $item['total_with_vat'] = $item['total'] + ($item['total'] * $vatRate / 100);
 

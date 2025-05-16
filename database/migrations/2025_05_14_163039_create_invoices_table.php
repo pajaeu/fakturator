@@ -21,8 +21,7 @@ return new class extends Migration
             $table->date('due_at');
             $table->double('total');
             $table->double('total_with_vat');
-            $table->string('currency_code')->default('CZK');
-            $table->string('currency_symbol')->default('Kč');
+            $table->string('currency')->default(App\Enums\Currency::CZK);
             $table->string('supplier_company');
             $table->string('supplier_company_id');
             $table->string('supplier_vat_id')->nullable();

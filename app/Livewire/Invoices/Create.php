@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Invoices;
 
 use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
+use App\Enums\Currency;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
@@ -52,6 +53,8 @@ final class Create extends Component
 
     public string $due_at = '';
 
+    public string $currency = '';
+
     public string $contact_search = '';
 
     public ?string $new_contact_company_id = null;
@@ -66,6 +69,8 @@ final class Create extends Component
 
         $this->issued_at = now()->format('d. m. Y');
         $this->due_at = now()->addWeek()->format('d. m. Y');
+
+        $this->currency = Currency::CZK->value;
     }
 
     public function updatedContactSearch(): void
@@ -171,6 +176,7 @@ final class Create extends Component
 
         Invoice::query()->create([
             ...$data,
+            'currency' => $this->currency,
             'issued_at' => Carbon::createFromFormat('d. m. Y', $this->issued_at)?->toDateString(),
             'due_at' => Carbon::createFromFormat('d. m. Y', $this->due_at)?->toDateString(),
             'supplier_company' => $user->billing_company,
@@ -198,11 +204,11 @@ final class Create extends Component
             'customer_zip' => 'required|string|min:5|max:255',
             'customer_phone' => Rule::when($this->customer_phone !== null, 'string|min:6'),
             'customer_email' => Rule::when($this->customer_email !== null, 'email'),
-			'number' => [
-				'required',
-				'string',
-				Rule::unique('invoices')->where(fn (Builder $query) => $query->where('user_id', auth()->id())),
-			],
+            'number' => [
+                'required',
+                'string',
+                Rule::unique('invoices')->where(fn (Builder $query) => $query->where('user_id', auth()->id())),
+            ],
             'variable_symbol' => 'required|string',
             'issued_at' => 'required|date_format:d. m. Y',
             'due_at' => 'required|date_format:d. m. Y',
