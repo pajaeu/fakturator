@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Livewire\Invoices;
 
+use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
 use App\Models\Invoice;
 use App\Models\User;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Livewire\Attributes\Locked;
-use Livewire\Attributes\Url;
 use Livewire\Component;
 
 final class Create extends Component
@@ -52,6 +53,8 @@ final class Create extends Component
 
     public string $contact_search = '';
 
+    public ?string $new_contact_company_id = null;
+
     /** @var Collection<int, Contact> */
     #[Locked]
     public Collection $contacts;
@@ -71,7 +74,10 @@ final class Create extends Component
 
     public function loadContacts(): void
     {
-        $this->contacts = Contact::query()->whereLike('name', "%{$this->contact_search}%")->get();
+        $this->contacts = Contact::query()
+            ->whereLike('name', sprintf('%%%s%%', $this->contact_search))
+            ->orWhereLike('company_id', sprintf('%%%s%%', $this->contact_search))
+            ->get();
     }
 
     public function fillFieldsFromContact(int $contactId): void
@@ -84,16 +90,55 @@ final class Create extends Component
 
         $this->reset(['contact_search', 'contacts']);
 
-        $this->contact_id = $contact->id;
-        $this->customer_company = $contact->name;
-        $this->customer_company_id = $contact->company_id;
-        $this->customer_vat_id = $contact->vat_id;
-        $this->customer_address = $contact->address;
-        $this->customer_city = $contact->city;
-        $this->customer_zip = $contact->zip;
-        $this->customer_country = $contact->country->value;
+        $this->fillCustomerFieldsFromContact($contact);
 
         $this->dispatch('close-contact-search-modal');
+    }
+
+    public function addNewContact(): void
+    {
+        $this->validate([
+            'new_contact_company_id' => 'required|digits:8',
+        ]);
+
+        $contact = Contact::query()->where('company_id', $this->new_contact_company_id)->first();
+
+        if ($contact) {
+            $this->addError('new_contact_company_id', __('This contact already exists in your account.'));
+
+            return;
+        }
+
+        $company_id = is_string($this->new_contact_company_id) ? $this->new_contact_company_id : '';
+
+        try {
+            $data = GetCompanyDetailsFromCompanyId::handle($company_id);
+        } catch (Exception) {
+            $this->addError('new_contact_company_id', __('Company details could not be found.'));
+
+            return;
+        }
+
+        try {
+            $contact = Contact::query()->create([
+                'company_id' => $data['company_id'],
+                'vat_id' => $data['vat_id'],
+                'name' => $data['company'],
+                'address' => $data['address'],
+                'city' => $data['city'],
+                'zip' => $data['zip'],
+                'country' => $data['country'],
+                'user_id' => auth()->id(),
+            ]);
+
+            $this->fillCustomerFieldsFromContact($contact);
+        } catch (Exception) {
+            $this->addError('new_contact_company_id', __('Contact could not be created.'));
+        }
+
+        $this->reset('new_contact_company_id');
+
+        $this->dispatch('close-contact-create-modal');
     }
 
     public function save(): void
@@ -162,5 +207,17 @@ final class Create extends Component
     public function render(): View
     {
         return view('livewire.invoices.create');
+    }
+
+    private function fillCustomerFieldsFromContact(Contact $contact): void
+    {
+        $this->contact_id = $contact->id;
+        $this->customer_company = $contact->name;
+        $this->customer_company_id = $contact->company_id;
+        $this->customer_vat_id = $contact->vat_id;
+        $this->customer_address = $contact->address;
+        $this->customer_city = $contact->city;
+        $this->customer_zip = $contact->zip;
+        $this->customer_country = $contact->country->value;
     }
 }

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Livewire\Contacts;
 
+use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
+use Exception;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -33,9 +35,21 @@ final class Create extends Component
 
     public ?string $email = null;
 
-    public function updatedCompanyId(): void
+    public function updatedCompanyId(string $value): void
     {
-        // todo get data from ares
+        try {
+            $data = GetCompanyDetailsFromCompanyId::handle($value);
+
+            $this->company_id = $data['company_id'];
+            $this->vat_id = $data['vat_id'];
+            $this->name = $data['company'];
+            $this->address = $data['address'];
+            $this->city = $data['city'];
+            $this->country = $data['country'];
+            $this->zip = $data['zip'];
+        } catch (Exception) {
+            $this->addError('company_id', __('Company details could not be found.'));
+        }
     }
 
     public function save(): void

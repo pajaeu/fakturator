@@ -294,5 +294,8 @@
 	"Print": "Vytisknout",
 	"Download": "Stáhnout",
 	"Search in contacts": "Hledat v kontaktech",
-	"No contact found": "Nebyl nalezen žádný kontakt"
+	"No contact found": "Nebyl nalezen žádný kontakt",
+	"This contact already exists in your account.": "Tento kontakt již ve vašem účtu existuje.",
+	"Contact could not be created.": "Kontakt nemohl být vytvořen.",
+	"Company details could not be found.": "Firma nebyla nalezena."
 }

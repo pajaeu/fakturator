@@ -41,10 +41,22 @@
                             @endif
                         </x-slot:body>
                     </x-modal>
-                    <x-button href="{{ route('contacts.create') }}" :link="true" wire:navigate>
-                        <x-icons.plus class="size-4"/>
-                        <span>{{ __('Add new contact') }}</span>
-                    </x-button>
+                    <x-modal x-on:close-contact-create-modal.window="show = false">
+                        <x-button @click="show = !show">
+                            <x-icons.plus class="size-4"/>
+                            <span>{{ __('Add new contact') }}</span>
+                        </x-button>
+                        <x-slot:body class="max-w-md">
+                            <form wire:submit="addNewContact">
+                                <div class="mb-4">
+                                    <x-form.input wire:model.blur="new_contact_company_id" placeholder="{{ __('Company ID') }}" @class(['border-red-500' => $errors->has('new_contact_company_id')])/>
+                                    <x-form.input-error name="new_contact_company_id"/>
+                                    <div class="py-2 text-sm text-gray-500">{{ __('Enter the company ID, other data will be automatically filled in from the ARES database') }}</div>
+                                </div>
+                                <x-button type="submit">{{ __('Add new contact') }}</x-button>
+                            </form>
+                        </x-slot:body>
+                    </x-modal>
                 </div>
                 <div class="flex gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/3">{{ __('Name') }}</label>

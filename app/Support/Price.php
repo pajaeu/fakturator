@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Support;
 
-final class Price
+final readonly class Price
 {
     public function __construct(
         private float $amount,

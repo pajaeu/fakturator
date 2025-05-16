@@ -11,19 +11,19 @@
             <div class="w-10 text-end"></div>
         </div>
         <div x-data="{
-                init() {
-                    const el = this.$el;
-                    new Sortable(el, {
-                        animation: 150,
-                        handle: '.handle',
-                        onEnd: (evt) => {
-                            const newOrder = Array.from(el.children)
-                                .map(child => child.getAttribute('data-id'));
-                            @this.call('updateItemOrder', newOrder);
-                        }
-                    });
-                }
-            }">
+            init() {
+                const el = this.$el;
+                new Sortable(el, {
+                    animation: 150,
+                    handle: '.handle',
+                    onEnd: (evt) => {
+                        const newOrder = Array.from(el.children)
+                            .map(child => child.getAttribute('data-id'));
+                        @this.call('updateItemOrder', newOrder);
+                    }
+                });
+            }
+        }">
             @foreach($items as $index => $item)
                 <div wire:key="item_{{ $index }}" class="flex gap-2 mb-2 items-center" data-id="{{ $index }}">
                     <div class="w-10">
