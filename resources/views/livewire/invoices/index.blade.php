@@ -29,6 +29,8 @@
                         <x-table.action-dropdown>
                             <x-slot:items>
                                 <x-table.action-dropdown.item>{{ __('Edit') }}</x-table.action-dropdown.item>
+                                <x-table.action-dropdown.item>{{ __('Print') }}</x-table.action-dropdown.item>
+                                <x-table.action-dropdown.item>{{ __('Download') }}</x-table.action-dropdown.item>
                                 <x-table.action-dropdown.item wire:click="delete({{ $invoice->id }})" wire:confirm="{{ __('Are you sure you want to delete this record?') }}">{{ __('Delete') }}</x-table.action-dropdown.item>
                             </x-slot:items>
                         </x-table.action-dropdown>
