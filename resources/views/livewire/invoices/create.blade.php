@@ -13,13 +13,35 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-20">
             <div>
                 <div class="flex gap-2 mb-4">
-                    <x-button>
+                    <x-modal x-on:close-contact-search-modal.window="show = false">
+                        <x-button wire:click="loadContacts" @click="show = !show">
+                            <x-icons.user-search class="size-4"/>
+                            <span>{{ __('Choose from contacts') }}</span>
+                        </x-button>
+                        <x-slot:body class="max-w-md">
+                            <div class="mb-4">
+                                <x-form.input wire:model.live.debounce.250ms="contact_search" placeholder="{{ __('Search in contacts') }}"/>
+                            </div>
+                            <div wire:loading wire:target="loadContacts">
+                                načítám
+                            </div>
+                            @if($contacts)
+                                <div wire:loading.remove wire:target="loadContacts" class="rounded border border-gray-200 overflow-hidden max-h-64 overflow-y-auto">
+                                    @forelse($contacts as $contact)
+                                        <div wire:click="fillFieldsFromContact({{ $contact->id }})" class="cursor-pointer py-2 px-4 border-b last:border-b-0 border-gray-200 hover:bg-gray-50 transition-colors">
+                                            <div class="mb-1">{{ $contact->name }}</div>
+                                            <div class="text-xs text-gray-500">{{ __('Company ID') }}: {{ $contact->company_id }}</div>
+                                        </div>
+                                    @empty
+                                        <div class="p-4 text-gray-500">{{ __('No contact found') }}</div>
+                                    @endforelse
+                                </div>
+                            @endif
+                        </x-slot:body>
+                    </x-modal>
+                    <x-button href="{{ route('contacts.create') }}" :link="true" wire:navigate>
                         <x-icons.plus class="size-4"/>
                         <span>{{ __('Add new contact') }}</span>
-                    </x-button>
-                    <x-button>
-                        <x-icons.user-search class="size-4"/>
-                        <span>{{ __('Choose from contacts') }}</span>
                     </x-button>
                 </div>
                 <div class="flex gap-4 mb-4">

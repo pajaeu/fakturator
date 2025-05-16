@@ -6,11 +6,15 @@ namespace App\Livewire\Invoices;
 
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
+use App\Models\Contact;
 use App\Models\Invoice;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Livewire\Attributes\Locked;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 final class Create extends Component
@@ -46,6 +50,13 @@ final class Create extends Component
 
     public string $due_at = '';
 
+    #[Url(except: '')]
+    public string $contact_search = '';
+
+    /** @var Collection<int, Contact> */
+    #[Locked]
+    public Collection $contacts;
+
     public function mount(): void
     {
         $this->addItem();
@@ -54,24 +65,36 @@ final class Create extends Component
         $this->due_at = now()->addWeek()->format('d. m. Y');
     }
 
-    /** @return array<string, mixed> */
-    public function rules(): array
+    public function updatedContactSearch(): void
     {
-        return [
-            'customer_company_id' => 'required|digits:8',
-            'customer_vat_id' => Rule::when($this->customer_vat_id !== null, 'string|min:10|max:12'),
-            'customer_company' => 'required|string|min:6|max:255',
-            'customer_address' => 'required|string|min:6|max:255',
-            'customer_city' => 'required|string|min:6|max:255',
-            'customer_country' => 'required|string|size:2',
-            'customer_zip' => 'required|string|min:5|max:255',
-            'customer_phone' => Rule::when($this->customer_phone !== null, 'string|min:6'),
-            'customer_email' => Rule::when($this->customer_email !== null, 'email'),
-            'number' => 'required|string',
-            'variable_symbol' => 'required|string',
-            'issued_at' => 'required|date_format:d. m. Y',
-            'due_at' => 'required|date_format:d. m. Y',
-        ];
+        $this->loadContacts();
+    }
+
+    public function loadContacts(): void
+    {
+        $this->contacts = Contact::query()->whereLike('name', "%{$this->contact_search}%")->get();
+    }
+
+    public function fillFieldsFromContact(int $contactId): void
+    {
+        $contact = Contact::query()->find($contactId);
+
+        if (! $contact) {
+            return;
+        }
+
+        $this->reset(['contact_search', 'contacts']);
+
+        $this->contact_id = $contact->id;
+        $this->customer_company = $contact->name;
+        $this->customer_company_id = $contact->company_id;
+        $this->customer_vat_id = $contact->vat_id;
+        $this->customer_address = $contact->address;
+        $this->customer_city = $contact->city;
+        $this->customer_zip = $contact->zip;
+        $this->customer_country = $contact->country->value;
+
+        $this->dispatch('close-contact-search-modal');
     }
 
     public function save(): void
@@ -85,6 +108,7 @@ final class Create extends Component
 
         /** @var array<string, mixed> $data */
         $data = $this->pull([
+            'contact_id',
             'customer_company_id',
             'customer_vat_id',
             'customer_company',
@@ -114,6 +138,26 @@ final class Create extends Component
             'items' => $this->items,
             'user_id' => $user->id,
         ]);
+    }
+
+    /** @return array<string, mixed> */
+    public function rules(): array
+    {
+        return [
+            'customer_company_id' => 'required|digits:8',
+            'customer_vat_id' => Rule::when($this->customer_vat_id !== null, 'string|min:10|max:12'),
+            'customer_company' => 'required|string|min:6|max:255',
+            'customer_address' => 'required|string|min:6|max:255',
+            'customer_city' => 'required|string|min:6|max:255',
+            'customer_country' => 'required|string|size:2',
+            'customer_zip' => 'required|string|min:5|max:255',
+            'customer_phone' => Rule::when($this->customer_phone !== null, 'string|min:6'),
+            'customer_email' => Rule::when($this->customer_email !== null, 'email'),
+            'number' => 'required|string',
+            'variable_symbol' => 'required|string',
+            'issued_at' => 'required|date_format:d. m. Y',
+            'due_at' => 'required|date_format:d. m. Y',
+        ];
     }
 
     public function render(): View

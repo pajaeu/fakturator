@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property-read int $id
- * @property string|null $company_id
+ * @property string $company_id
  * @property string|null $vat_id
  * @property string $name
  * @property string $address

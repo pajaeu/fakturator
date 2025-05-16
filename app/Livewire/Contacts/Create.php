@@ -33,6 +33,24 @@ final class Create extends Component
 
     public ?string $email = null;
 
+    public function updatedCompanyId(): void
+    {
+        // todo get data from ares
+    }
+
+    public function save(): void
+    {
+        /** @var array<string, mixed> $data */
+        $data = $this->validate();
+
+        Contact::query()->create([
+            ...$data,
+            'user_id' => auth()->id(),
+        ]);
+
+        // todo redirect to contact detail
+    }
+
     /** @return array<string, mixed> */
     public function rules(): array
     {
@@ -51,24 +69,6 @@ final class Create extends Component
             'phone' => Rule::when($this->phone !== null, 'string|min:6'),
             'email' => Rule::when($this->email !== null, 'email'),
         ];
-    }
-
-    public function updatedCompanyId(): void
-    {
-        // todo get data from ares
-    }
-
-    public function save(): void
-    {
-        /** @var array<string, mixed> $data */
-        $data = $this->validate();
-
-        Contact::query()->create([
-            ...$data,
-            'user_id' => auth()->id(),
-        ]);
-
-        // todo redirect to contact detail
     }
 
     public function render(): View
