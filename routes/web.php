@@ -13,6 +13,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contacts', App\Livewire\Contacts\Index::class)->name('contacts.index');
     Route::get('/contact/new', App\Livewire\Contacts\Create::class)->name('contacts.create');
 
+    Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
+        Route::get('billing', App\Livewire\Settings\Billing::class)->name('billing');
+    });
+
     Route::get('/locale/{locale}/switch', App\Http\Controllers\SwitchLocaleController::class)->name('locale.switch');
 
     Route::post('/logout', App\Http\Controllers\Auth\LogoutController::class)->name('logout');

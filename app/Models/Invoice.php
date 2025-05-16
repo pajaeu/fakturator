@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property Carbon $due_at
  * @property float $total
  * @property string $supplier_company
+ * @property string $supplier_company_id
+ * @property string|null $supplier_vat_id
  * @property string $supplier_address
  * @property string $supplier_city
  * @property string $supplier_country
@@ -32,6 +34,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $customer_phone
  * @property string|null $customer_email
  * @property string|null $note
+ * @property array<int, mixed>|null $items
  * @property int|null $contact_id
  * @property-read Contact $contact
  * @property Carbon $created_at
@@ -46,6 +49,7 @@ final class Invoice extends Model
         'issued_at' => 'date',
         'due_at' => 'date',
         'total' => 'float',
+        'items' => 'array',
     ];
 
     /** @return BelongsTo<Contact, $this> */

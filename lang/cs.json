@@ -283,5 +283,6 @@
 	"Issue invoice": "Vystavit fakturu",
 	"Add new contact": "Přidat nový kontakt",
 	"Choose from contacts": "Vybrat z kontaktů",
-	"pcs": "ks"
+	"pcs": "ks",
+	"Billing settings": "Fakturační údaje"
 }

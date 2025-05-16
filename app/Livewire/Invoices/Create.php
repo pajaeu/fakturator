@@ -6,6 +6,9 @@ namespace App\Livewire\Invoices;
 
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
+use App\Models\Invoice;
+use App\Models\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -39,9 +42,9 @@ final class Create extends Component
 
     public ?string $variable_symbol = null;
 
-    public ?string $issued_at = null;
+    public string $issued_at;
 
-    public ?string $due_at = null;
+    public string $due_at;
 
     public function mount(): void
     {
@@ -76,6 +79,40 @@ final class Create extends Component
         $this->validate();
 
         $this->validateItems();
+
+        /** @var User $user */
+        $user = auth()->user();
+
+        /** @var array<string, mixed> $data */
+        $data = $this->pull([
+            'customer_company_id',
+            'customer_vat_id',
+            'customer_company',
+            'customer_address',
+            'customer_city',
+            'customer_country',
+            'customer_zip',
+            'customer_phone',
+            'customer_email',
+            'number',
+            'variable_symbol',
+            'total',
+            'total_with_vat',
+        ]);
+
+        Invoice::query()->create($data + [
+            'issued_at' => Carbon::createFromFormat('d. m. Y', $this->issued_at)?->toDateString(),
+            'due_at' => Carbon::createFromFormat('d. m. Y', $this->due_at)?->toDateString(),
+            'supplier_company' => $user->billing_company,
+            'supplier_company_id' => $user->company_id,
+            'supplier_vat_id' => $user->vat_id,
+            'supplier_address' => $user->billing_address,
+            'supplier_city' => $user->billing_city,
+            'supplier_country' => $user->billing_country,
+            'supplier_zip' => $user->billing_zip,
+            'items' => $this->items,
+            'user_id' => $user->id,
+        ]);
     }
 
     public function render(): View
