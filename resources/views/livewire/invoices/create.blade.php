@@ -20,7 +20,12 @@
                         </x-button>
                         <x-slot:body class="max-w-md">
                             <div class="mb-4">
-                                <x-form.input wire:model.live.debounce.250ms="contact_search" placeholder="{{ __('Search in contacts') }}"/>
+                                <div class="relative rounded-lg">
+                                    <div class="absolute left-3 top-2.5">
+                                        <x-icons.search class="size-5 text-gray-500"/>
+                                    </div>
+                                    <x-form.input wire:model.live.debounce.250ms="contact_search" class="ps-10" placeholder="{{ __('Search in contacts') }}"/>
+                                </div>
                             </div>
                             <div wire:loading.flex wire:target="loadContacts">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto size-10 text-blue-600 animate-spin" viewBox="0 0 24 24" fill="currentColor">
