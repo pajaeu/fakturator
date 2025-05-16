@@ -14,7 +14,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contact/new', App\Livewire\Contacts\Create::class)->name('contacts.create');
 
     Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
-		Route::view('', 'settings')->name('index');
+        Route::view('', 'settings')->name('index');
         Route::get('billing', App\Livewire\Settings\Billing::class)->name('billing');
     });
 

@@ -56,7 +56,7 @@
                     <div class="flex-1 text-end">
                         <div class="py-2 px-4 rounded-lg border border-gray-300 bg-gray-50">
                             <input type="hidden" wire:model="items.{{ $index }}.total">
-                            <span>{{ number_format((float) $item['total'], decimals: 2, decimal_separator: ',', thousands_separator: ' ') }} Kč</span>
+                            <span>{{ price((float) $item['total'], 'Kč')->format() }}</span>
                         </div>
                     </div>
                     <div class="w-10">
