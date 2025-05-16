@@ -52,7 +52,7 @@ final class Billing extends Component
             'company_id' => [
                 'required',
                 'digits:8',
-                Rule::unique('users', 'company_id')->ignore($this->user->id),
+                Rule::unique('users')->ignore($this->user->id),
             ],
             'vat_id' => Rule::when($this->vat_id !== null, 'string|min:10|max:12'),
             'billing_company' => 'required|string|min:6|max:255',
