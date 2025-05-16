@@ -4,9 +4,9 @@
             <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-auto h-7">
         </a>
         <div class="ms-6 flex items-center gap-1">
-            <a href="{{ route('invoices.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Invoices') }}</a>
-            <a href="{{ route('contacts.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Contacts') }}</a>
-            <a href="{{ route('settings.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border border-transparent hover:border-gray-800 transition-colors">{{ __('Settings') }}</a>
+            <a href="{{ route('invoices.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('invoices.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Invoices') }}</a>
+            <a href="{{ route('contacts.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('contacts.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Contacts') }}</a>
+            <a href="{{ route('settings.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('settings.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Settings') }}</a>
         </div>
         <div class="ms-auto flex items-center gap-4">
             <x-button href="{{ route('invoices.create') }}" :link="true" variant="outline" wire:navigate>
