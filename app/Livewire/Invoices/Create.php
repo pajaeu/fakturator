@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Invoices;
 
 use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
+use App\Actions\GenerateLatestInvoiceNumber;
 use App\Enums\Currency;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
@@ -69,6 +70,11 @@ final class Create extends Component
 
         $this->issued_at = now()->format('d. m. Y');
         $this->due_at = now()->addWeek()->format('d. m. Y');
+
+        $number = GenerateLatestInvoiceNumber::handle();
+
+        $this->number = $number;
+        $this->variable_symbol = $number;
 
         $this->currency = Currency::CZK->value;
     }
