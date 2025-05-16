@@ -18,7 +18,7 @@
                     <img src="{{ auth()->user()->avatarUrl() }}" alt="Avatar" class="size-full">
                 </button>
                 <div class="absolute top-0 right-0 mt-[57px] z-10 p-3 rounded-b-lg w-max min-w-[200px] shadow-md bg-white" x-show="show" x-cloak @click.outside.window="show = false">
-                    <a class="cursor-pointer w-full flex gap-4 items-center py-2 px-3 rounded hover:bg-gray-100 transition-colors">
+                    <a href="{{ route('settings.billing') }}" wire:navigate class="cursor-pointer w-full flex gap-4 items-center py-2 px-3 rounded hover:bg-gray-100 transition-colors">
                         <x-icons.settings class="size-5 text-blue-600"/>
                         <span>{{ __('Settings') }}</span>
                     </a>
