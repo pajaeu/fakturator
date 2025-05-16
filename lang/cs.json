@@ -314,5 +314,6 @@
 	"Edit account": "Upravit účet",
 	"Change login credentials": "Změnit přihlašovací údaje",
 	"Bulk actions": "Hromadné akce",
-	"Delete all": "Smazat vše"
+	"Delete all": "Smazat vše",
+	"No records found": "Žádné nalezené záznamy"
 }
