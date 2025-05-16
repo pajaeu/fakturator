@@ -12,6 +12,7 @@ use App\Models\Invoice;
 use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -197,7 +198,11 @@ final class Create extends Component
             'customer_zip' => 'required|string|min:5|max:255',
             'customer_phone' => Rule::when($this->customer_phone !== null, 'string|min:6'),
             'customer_email' => Rule::when($this->customer_email !== null, 'email'),
-            'number' => 'required|string',
+			'number' => [
+				'required',
+				'string',
+				Rule::unique('invoices')->where(fn (Builder $query) => $query->where('user_id', auth()->id())),
+			],
             'variable_symbol' => 'required|string',
             'issued_at' => 'required|date_format:d. m. Y',
             'due_at' => 'required|date_format:d. m. Y',
