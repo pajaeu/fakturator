@@ -147,10 +147,10 @@ final class Create extends Component
         $this->dispatch('close-contact-create-modal');
     }
 
-	public function resetContactId(): void
-	{
-		$this->reset('contact_id');
-	}
+    public function resetContactId(): void
+    {
+        $this->reset('contact_id');
+    }
 
     public function save(): void
     {
