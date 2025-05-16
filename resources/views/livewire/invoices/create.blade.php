@@ -127,6 +127,6 @@
     </div>
     @include('partials.invoice.items')
     <div class="mt-5 md:flex md:justify-end">
-        <button wire:click="save" class="cursor-pointer py-3 px-4 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">{{ __('Issue invoice') }}</button>
+        <button wire:click="save" class="cursor-pointer py-3 px-6 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">{{ __('Issue invoice') }}</button>
     </div>
 </div>

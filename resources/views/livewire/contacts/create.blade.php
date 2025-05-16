@@ -77,6 +77,6 @@
         </div>
     </x-card>
     <div class="mt-5 md:flex md:justify-end">
-        <button wire:click="save" class="cursor-pointer py-3 px-4 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">{{ __('Create contact') }}</button>
+        <button wire:click="save" class="cursor-pointer py-3 px-6 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">{{ __('Create contact') }}</button>
     </div>
 </div>
