@@ -297,5 +297,17 @@
 	"No contact found": "Nebyl nalezen žádný kontakt",
 	"This contact already exists in your account.": "Tento kontakt již ve vašem účtu existuje.",
 	"Contact could not be created.": "Kontakt nemohl být vytvořen.",
-	"Company details could not be found.": "Firma nebyla nalezena."
+	"Company details could not be found.": "Firma nebyla nalezena.",
+	"Currency": "Měna",
+	"Select currency": "Vyberte měnu",
+	"US Dollar": "Americký dolar",
+	"Euro": "Euro",
+	"British Pound": "Britská libra",
+	"Japanese Yen": "Japonský jen",
+	"Australian Dollar": "Australský dolar",
+	"Canadian Dollar": "Kanadský dolar",
+	"Swiss Franc": "Švýcarský frank",
+	"Chinese Yuan": "Čínský jüan",
+	"Swedish Krona": "Švédská koruna",
+	"Czech Koruna": "Česká koruna"
 }
