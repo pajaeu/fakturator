@@ -63,7 +63,10 @@ final class Create extends Component
         /** @var array<string, mixed> $data */
         $data = $this->validate();
 
-        Contact::query()->create($data + ['user_id' => auth()->id()]);
+        Contact::query()->create([
+            ...$data,
+            'user_id' => auth()->id(),
+        ]);
 
         // todo redirect to contact detail
     }

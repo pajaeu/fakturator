@@ -100,7 +100,8 @@ final class Create extends Component
             'total_with_vat',
         ]);
 
-        Invoice::query()->create($data + [
+        Invoice::query()->create([
+            ...$data,
             'issued_at' => Carbon::createFromFormat('d. m. Y', $this->issued_at)?->toDateString(),
             'due_at' => Carbon::createFromFormat('d. m. Y', $this->due_at)?->toDateString(),
             'supplier_company' => $user->billing_company,
