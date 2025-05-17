@@ -12,6 +12,10 @@ final class LogoutController
     {
         auth()->logout();
 
+        session()->invalidate();
+
+        session()->regenerateToken();
+
         return to_route('login');
     }
 }
