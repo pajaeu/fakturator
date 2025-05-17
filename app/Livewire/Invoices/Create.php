@@ -212,9 +212,9 @@ final class Create extends Component
         return [
             'customer_company_id' => 'required|digits:8',
             'customer_vat_id' => Rule::when($this->customer_vat_id !== null, 'string|min:10|max:12'),
-            'customer_company' => 'required|string|min:6|max:255',
-            'customer_address' => 'required|string|min:6|max:255',
-            'customer_city' => 'required|string|min:6|max:255',
+            'customer_company' => 'required|string|min:3|max:255',
+            'customer_address' => 'required|string|min:3|max:255',
+            'customer_city' => 'required|string|min:2|max:255',
             'customer_country' => 'required|string|size:2',
             'customer_zip' => 'required|string|min:5|max:255',
             'customer_phone' => Rule::when($this->customer_phone !== null, 'string|min:6'),
