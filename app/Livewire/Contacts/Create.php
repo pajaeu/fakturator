@@ -62,7 +62,7 @@ final class Create extends Component
             'user_id' => auth()->id(),
         ]);
 
-        // todo redirect to contact detail
+        $this->redirectRoute('contacts.index', navigate: true);
     }
 
     /** @return array<string, mixed> */
