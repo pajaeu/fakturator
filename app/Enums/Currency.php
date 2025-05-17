@@ -52,9 +52,9 @@ enum Currency: string
     public function format(float $amount): string
     {
         return match ($this) {
-            self::USD, self::AUD, self::CAD, self::GBP => sprintf('%s%.2f', $this->symbol(), $amount),
-            self::EUR, self::CHF, self::CNY, self::SEK, self::CZK => sprintf('%.2f %s', $amount, $this->symbol()),
-            self::JPY => sprintf('%s%.0f', $this->symbol(), $amount),
+            self::USD, self::AUD, self::CAD, self::GBP => sprintf('%s%s', $this->symbol(), number_format($amount, 2, ',', ' ')),
+            self::EUR, self::CHF, self::CNY, self::SEK, self::CZK => sprintf('%s %s', number_format($amount, 2, ',', ' '), $this->symbol()),
+            self::JPY => sprintf('%s%s', $this->symbol(), number_format($amount, 0, ',', ' ')),
         };
     }
 }
