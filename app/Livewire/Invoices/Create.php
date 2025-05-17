@@ -185,11 +185,12 @@ final class Create extends Component
             'variable_symbol',
             'total',
             'total_with_vat',
+            'currency',
+            'items',
         ]);
 
         Invoice::query()->create([
             ...$data,
-            'currency' => $this->currency,
             'issued_at' => Carbon::createFromFormat('d. m. Y', $this->issued_at)?->toDateString(),
             'due_at' => Carbon::createFromFormat('d. m. Y', $this->due_at)?->toDateString(),
             'supplier_company' => $user->billing_company,
@@ -199,9 +200,10 @@ final class Create extends Component
             'supplier_city' => $user->billing_city,
             'supplier_country' => $user->billing_country,
             'supplier_zip' => $user->billing_zip,
-            'items' => $this->items,
             'user_id' => $user->id,
         ]);
+
+        $this->redirectRoute('invoices.index', navigate: true);
     }
 
     /** @return array<string, mixed> */
