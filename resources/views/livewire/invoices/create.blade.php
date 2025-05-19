@@ -149,6 +149,30 @@
                         <x-form.input-error name="variable_symbol"/>
                     </div>
                 </div>
+                <div class="flex gap-4 mb-4">
+                    <label class="w-full md:pt-2 md:w-1/3">{{ __('Payment method') }}</label>
+                    <div class="w-full">
+                        <x-form.payment-select wire:model.live="payment_method" @class(['border-red-500' => $errors->has('payment_method')])/>
+                        <x-form.input-error name="payment_method"/>
+                    </div>
+                </div>
+                @if($payment_method === \App\Enums\PaymentMethod::BANK_TRANSFER->value)
+                    <div class="flex gap-4">
+                        <label class="w-full md:pt-2 md:w-1/3">{{ __('Bank account') }}</label>
+                        <div class="w-full">
+                            <x-form.select wire:model.live="bank_account_id" @class(['border-red-500' => $errors->has('bank_account_id')])>
+                                @php
+                                    $accounts = \App\Models\BankAccount::query()->get();
+                                @endphp
+                                <option>{{ __('Select bank account') }}</option>
+                                @foreach($accounts as $account)
+                                    <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                @endforeach
+                            </x-form.select>
+                            <x-form.input-error name="bank_account_id"/>
+                        </div>
+                    </div>
+                @endif
             </div>
             <div>
                 <div class="flex gap-4 mb-4">

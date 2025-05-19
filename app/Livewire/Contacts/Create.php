@@ -20,7 +20,7 @@ final class Create extends Component
 
     public bool $otherDataFilled = false;
 
-    public function updatedCompanyId(): void
+    public function updatedCompanyId(string $value): void
     {
         $this->otherDataFilled = true;
     }

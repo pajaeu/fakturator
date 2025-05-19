@@ -8,6 +8,7 @@ use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
 use App\Actions\GenerateLatestInvoiceNumber;
 use App\Enums\Country;
 use App\Enums\Currency;
+use App\Enums\PaymentMethod;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
@@ -57,6 +58,10 @@ final class Create extends Component
 
     public string $currency = '';
 
+    public string $payment_method = '';
+
+    public ?int $bank_account_id = null;
+
     public string $contact_search = '';
 
     public ?string $new_contact_company_id = null;
@@ -75,6 +80,7 @@ final class Create extends Component
         $number = GenerateLatestInvoiceNumber::handle();
 
         $this->number = $number;
+
         $this->variable_symbol = $number;
 
         $this->currency = Currency::CZK->value;
@@ -187,6 +193,8 @@ final class Create extends Component
             'total',
             'total_with_vat',
             'currency',
+            'payment_method',
+            'bank_account_id',
             'items',
         ]);
 
@@ -235,6 +243,11 @@ final class Create extends Component
                 'required',
                 Rule::in(Currency::cases()),
             ],
+            'payment_method' => [
+                'required',
+                Rule::in(PaymentMethod::cases()),
+            ],
+            'bank_account_id' => Rule::when($this->payment_method === PaymentMethod::BANK_TRANSFER->value, 'required|exists:bank_accounts,id'),
         ];
     }
 

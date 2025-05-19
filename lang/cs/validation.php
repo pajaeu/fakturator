@@ -303,5 +303,7 @@ return [
         'billing_country' => 'země',
         'new_contact_company_id' => 'IČO',
         'bank_code' => 'kód banky',
+        'payment_method' => 'způsob platby',
+        'bank_account_id' => 'bankovní účet',
     ],
 ];

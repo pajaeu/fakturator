@@ -323,5 +323,11 @@
 	"Bank code": "Kód banky",
 	"Add new account": "Přidat bankovní účet",
 	"default account": "výchozí účet",
-	"Set as default": "Nastavit jako výchozí"
+	"Set as default": "Nastavit jako výchozí",
+	"Bank Transfer": "Převodem",
+	"Credit Card": "Kreditní kartou",
+	"Cash": "Hotově",
+	"Payment method": "Způsob platby",
+	"Select payment method": "Vyberte způsob platby",
+	"Select bank account": "Vyberte bankovní účet"
 }

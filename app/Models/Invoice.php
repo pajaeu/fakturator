@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\Country;
 use App\Enums\Currency;
+use App\Enums\PaymentMethod;
 use App\Models\Scopes\CurrentUserScope;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Attributes\ScopedBy;
@@ -41,6 +42,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property array<int, mixed>|null $items
  * @property int|null $contact_id
  * @property-read Contact $contact
+ * @property PaymentMethod $payment_method
+ * @property int|null $bank_account_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property int $user_id
@@ -55,6 +58,7 @@ final class Invoice extends Model
         'total' => 'float',
         'items' => 'array',
         'currency' => Currency::class,
+        'payment_method' => PaymentMethod::class,
         'supplier_country' => Country::class,
         'customer_country' => Country::class,
     ];

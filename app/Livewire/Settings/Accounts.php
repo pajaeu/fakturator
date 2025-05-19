@@ -26,15 +26,15 @@ final class Accounts extends Component
         /** @var array<string, mixed> $data */
         $data = $this->validate();
 
-		$default = !BankAccount::query()->where('default', true)->exists();
+        $default = ! BankAccount::query()->where('default', true)->exists();
 
         BankAccount::query()->create([
             ...$data,
-			'default' => $default,
+            'default' => $default,
             'user_id' => auth()->id(),
         ]);
 
-		$this->dispatch('close-account-create-modal');
+        $this->dispatch('close-account-create-modal');
     }
 
     public function setAsDefault(int $accountId): void
