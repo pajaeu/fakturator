@@ -316,5 +316,7 @@
 	"Bulk actions": "Hromadné akce",
 	"Delete all": "Smazat vše",
 	"No records found": "Žádné nalezené záznamy",
-	"Assigned contact": "Přiřazený kontakt"
+	"Assigned contact": "Přiřazený kontakt",
+	"Enter other data manually": "Zadat ostatní údaje ručně",
+	"Edit contact": "Upravit kontakt"
 }

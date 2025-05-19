@@ -12,6 +12,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/contacts', App\Livewire\Contacts\Index::class)->name('contacts.index');
     Route::get('/contact/new', App\Livewire\Contacts\Create::class)->name('contacts.create');
+    Route::get('/contact/edit/{contact}', App\Livewire\Contacts\Edit::class)->name('contacts.edit');
 
     Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
         Route::view('', 'settings')->name('index');
