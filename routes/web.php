@@ -17,6 +17,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
         Route::view('', 'settings')->name('index');
         Route::get('billing', App\Livewire\Settings\Billing::class)->name('billing');
+        Route::get('accounts', App\Livewire\Settings\Accounts::class)->name('accounts');
     });
 
     Route::post('/logout', App\Http\Controllers\Auth\LogoutController::class)->name('logout');

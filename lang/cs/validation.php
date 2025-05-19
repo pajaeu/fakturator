@@ -302,5 +302,6 @@ return [
         'supplier_country' => 'země',
         'billing_country' => 'země',
         'new_contact_company_id' => 'IČO',
+        'bank_code' => 'kód banky',
     ],
 ];

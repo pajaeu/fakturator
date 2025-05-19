@@ -47,12 +47,4 @@ return new class extends Migration
             $table->unique(['number', 'user_id']);
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('invoices');
-    }
 };

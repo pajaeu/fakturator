@@ -318,5 +318,10 @@
 	"No records found": "Žádné nalezené záznamy",
 	"Assigned contact": "Přiřazený kontakt",
 	"Enter other data manually": "Zadat ostatní údaje ručně",
-	"Edit contact": "Upravit kontakt"
+	"Edit contact": "Upravit kontakt",
+	"Bank account": "Bankovní účty",
+	"Bank code": "Kód banky",
+	"Add new account": "Přidat bankovní účet",
+	"default account": "výchozí účet",
+	"Set as default": "Nastavit jako výchozí"
 }

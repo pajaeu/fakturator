@@ -30,12 +30,4 @@ return new class extends Migration
             $table->unique(['company_id', 'user_id']);
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('contacts');
-    }
 };
