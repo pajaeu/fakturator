@@ -6,6 +6,7 @@ namespace App\Livewire\Invoices;
 
 use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
 use App\Actions\GenerateLatestInvoiceNumber;
+use App\Enums\Country;
 use App\Enums\Currency;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
@@ -215,7 +216,10 @@ final class Create extends Component
             'customer_company' => 'required|string|min:3|max:255',
             'customer_address' => 'required|string|min:3|max:255',
             'customer_city' => 'required|string|min:2|max:255',
-            'customer_country' => 'required|string|size:2',
+            'customer_country' => [
+                'required',
+                Rule::in(Country::cases()),
+            ],
             'customer_zip' => 'required|string|min:5|max:255',
             'customer_phone' => Rule::when($this->customer_phone !== null, 'string|min:6'),
             'customer_email' => Rule::when($this->customer_email !== null, 'email'),
@@ -227,6 +231,10 @@ final class Create extends Component
             'variable_symbol' => 'required|string',
             'issued_at' => 'required|date_format:d. m. Y',
             'due_at' => 'required|date_format:d. m. Y',
+            'currency' => [
+                'required',
+                Rule::in(Currency::cases()),
+            ],
         ];
     }
 

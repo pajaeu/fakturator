@@ -39,8 +39,6 @@ trait CreatesUpdatesContact
             $this->city = $data['city'];
             $this->country = $data['country'];
             $this->zip = $data['zip'];
-
-            $this->otherDataFilled = true;
         } catch (Exception) {
             $this->addError('company_id', __('Company details could not be found.'));
         }

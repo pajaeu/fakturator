@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Contacts;
 
+use App\Enums\Country;
 use App\Livewire\Concerns\CreatesUpdatesContact;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\Contact;
@@ -18,6 +19,11 @@ final class Create extends Component
     use ResetsValidationAfterUpdate;
 
     public bool $otherDataFilled = false;
+
+    public function updatedCompanyId(): void
+    {
+        $this->otherDataFilled = true;
+    }
 
     public function save(): void
     {
@@ -45,7 +51,10 @@ final class Create extends Component
             'name' => 'required|string|min:3|max:255',
             'address' => 'required|string|min:3|max:255',
             'city' => 'required|string|min:2|max:255',
-            'country' => 'required|string|size:2',
+            'country' => [
+                'required',
+                Rule::in(Country::cases()),
+            ],
             'zip' => 'required|string|min:5|max:255',
             'phone' => Rule::when($this->phone !== null, 'string|min:6'),
             'email' => Rule::when($this->email !== null, 'email'),
