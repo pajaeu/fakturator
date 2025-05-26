@@ -11,6 +11,7 @@ use App\Enums\Currency;
 use App\Enums\PaymentMethod;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
+use App\Models\BankAccount;
 use App\Models\Contact;
 use App\Models\Invoice;
 use App\Models\User;
@@ -74,16 +75,7 @@ final class Create extends Component
     {
         $this->addItem();
 
-        $this->issued_at = now()->format('d. m. Y');
-        $this->due_at = now()->addWeek()->format('d. m. Y');
-
-        $number = GenerateLatestInvoiceNumber::handle();
-
-        $this->number = $number;
-
-        $this->variable_symbol = $number;
-
-        $this->currency = Currency::CZK->value;
+        $this->setDefaultValues();
     }
 
     public function updatedContactSearch(): void
@@ -267,4 +259,19 @@ final class Create extends Component
         $this->customer_zip = $contact->zip;
         $this->customer_country = $contact->country->value;
     }
+
+	private function setDefaultValues(): void
+	{
+		$this->issued_at = now()->format('d. m. Y');
+		$this->due_at = now()->addWeek()->format('d. m. Y');
+
+		$number = GenerateLatestInvoiceNumber::handle();
+
+		$this->number = $number;
+		$this->variable_symbol = $number;
+
+		$this->currency = Currency::CZK->value;
+		$this->payment_method = BankAccount::query()->exists() ? PaymentMethod::BANK_TRANSFER->value : PaymentMethod::CASH->value;
+		$this->bank_account_id = BankAccount::query()->where('default', true)->first()->id ?? null;
+	}
 }
