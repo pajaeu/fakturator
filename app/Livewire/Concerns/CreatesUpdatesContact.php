@@ -27,7 +27,7 @@ trait CreatesUpdatesContact
 
     public ?string $email = null;
 
-    public function updatedCompanyId(string $value): void
+    public function loadDetailsFromCompanyId(string $value): void
     {
         try {
             $data = GetCompanyDetailsFromCompanyId::handle($value);

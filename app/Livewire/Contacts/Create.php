@@ -22,6 +22,8 @@ final class Create extends Component
 
     public function updatedCompanyId(string $value): void
     {
+        $this->loadDetailsFromCompanyId($value);
+
         $this->otherDataFilled = true;
     }
 

@@ -27,6 +27,11 @@ final class Edit extends Component
         $this->fill($this->contact);
     }
 
+    public function updatedCompanyId(string $value): void
+    {
+        $this->loadDetailsFromCompanyId($value);
+    }
+
     public function save(): void
     {
         /** @var array<string, mixed> $data */
