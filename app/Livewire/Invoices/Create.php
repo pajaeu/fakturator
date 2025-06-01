@@ -260,18 +260,18 @@ final class Create extends Component
         $this->customer_country = $contact->country->value;
     }
 
-	private function setDefaultValues(): void
-	{
-		$this->issued_at = now()->format('d. m. Y');
-		$this->due_at = now()->addWeek()->format('d. m. Y');
+    private function setDefaultValues(): void
+    {
+        $this->issued_at = now()->format('d. m. Y');
+        $this->due_at = now()->addWeek()->format('d. m. Y');
 
-		$number = GenerateLatestInvoiceNumber::handle();
+        $number = GenerateLatestInvoiceNumber::handle();
 
-		$this->number = $number;
-		$this->variable_symbol = $number;
+        $this->number = $number;
+        $this->variable_symbol = $number;
 
-		$this->currency = Currency::CZK->value;
-		$this->payment_method = BankAccount::query()->exists() ? PaymentMethod::BANK_TRANSFER->value : PaymentMethod::CASH->value;
-		$this->bank_account_id = BankAccount::query()->where('default', true)->first()->id ?? null;
-	}
+        $this->currency = Currency::CZK->value;
+        $this->payment_method = BankAccount::query()->exists() ? PaymentMethod::BANK_TRANSFER->value : PaymentMethod::CASH->value;
+        $this->bank_account_id = BankAccount::query()->where('default', true)->first()->id ?? null;
+    }
 }
