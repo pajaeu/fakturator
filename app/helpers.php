@@ -27,12 +27,16 @@ if (! function_exists('price')) {
 if (! function_exists('invoice_qr_payment')) {
     function invoice_qr_payment(Invoice $invoice): QrPayment
     {
+        if (! $invoice->bankAccount) {
+            throw new InvalidArgumentException('Invoice bank account is required.');
+        }
+
         return new QrPayment(
             $invoice->bankAccount->number,
             $invoice->bankAccount->bank_code,
             $invoice->total_with_vat,
             $invoice->currency->value,
-            $invoice->variable_symbol
+            $invoice->variable_symbol ?? $invoice->number
         );
     }
 }
