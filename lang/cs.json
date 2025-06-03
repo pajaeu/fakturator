@@ -329,5 +329,15 @@
 	"Cash": "Hotově",
 	"Payment method": "Způsob platby",
 	"Select payment method": "Vyberte způsob platby",
-	"Select bank account": "Vyberte bankovní účet"
+	"Select bank account": "Vyberte bankovní účet",
+	"Almost ready": "Téměř hotovo",
+	"You are almost there! We sent an email to": "Už jste skoro tam! Odeslali jsme e-mail na",
+	"Just click on the link in that email to complete your signup.": "Stačí kliknout na odkaz v tomto e-mailu a dokončit registraci.",
+	"A new email verification link has been emailed to you!": "Byl vám zaslán nový ověřovací e-mail!",
+	"Resend email": "Odeslat znovu",
+	"Verify your account on Fakturátor": "Ověřte svůj účet | Fakturátor",
+	"Hello,": "Dobrý den,",
+	"to make the most of your new account, you need to take the final step - activate it.": "abyste mohli svůj nový účet využívat naplno, je potřeba udělat poslední krok – aktivovat jej.",
+	"Activate account": "Aktivovat účet",
+	"Thank you for your registration, your Fakturátor team.": "Děkujeme vám za registraci, váš tým Fakturátor."
 }

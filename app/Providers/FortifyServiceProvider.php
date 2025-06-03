@@ -6,8 +6,11 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
+use App\Models\User;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -44,5 +47,13 @@ final class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView('auth.login');
         Fortify::registerView('auth.register');
+        Fortify::verifyEmailView('auth.verify');
+
+        VerifyEmail::toMailUsing(fn (User $user, string $url) => (new MailMessage)
+            ->subject(__('Verify your account on Fakturátor'))
+            ->view('mail.verify', [
+                'user' => $user,
+                'url' => $url,
+            ]));
     }
 }

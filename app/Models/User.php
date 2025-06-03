@@ -7,6 +7,7 @@ namespace App\Models;
 use App\Enums\Country;
 use Carbon\Carbon;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -29,7 +30,7 @@ use Illuminate\Notifications\Notifiable;
  * @property-read Collection<int, Contact> $contacts
  * @property-read Collection<int, Invoice> $invoices
  */
-final class User extends Authenticatable
+final class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory;
