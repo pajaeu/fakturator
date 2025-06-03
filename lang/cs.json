@@ -339,5 +339,9 @@
 	"Hello,": "Dobrý den,",
 	"to make the most of your new account, you need to take the final step - activate it.": "abyste mohli svůj nový účet využívat naplno, je potřeba udělat poslední krok – aktivovat jej.",
 	"Activate account": "Aktivovat účet",
-	"Thank you for your registration, your Fakturátor team.": "Děkujeme vám za registraci, váš tým Fakturátor."
+	"Thank you for your registration, your Fakturátor team.": "Děkujeme vám za registraci, váš tým Fakturátor.",
+	"Invoice": "Faktura",
+	"Edit invoice": "Upravit fakturu",
+	"Edit on invoice": "Upravit na faktuře",
+	"Cancel editing": "Zrušit úpravy"
 }

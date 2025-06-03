@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Livewire\Concerns;
+namespace App\Livewire\Contacts\Concerns;
 
 use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
 use Exception;

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Livewire\Contacts;
 
 use App\Enums\Country;
-use App\Livewire\Concerns\CreatesUpdatesContact;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
+use App\Livewire\Contacts\Concerns\CreatesUpdatesContact;
 use App\Models\Contact;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Validation\Rule;
