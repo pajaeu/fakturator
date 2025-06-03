@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Support;
 
-final class QrPayment
+final readonly class QrPayment
 {
-    private const API_URL = 'https://api.paylibo.com/paylibo/generator/czech/image';
+    private const string API_URL = 'https://api.paylibo.com/paylibo/generator/czech/image';
 
     public function __construct(
-        public readonly string $accountNumber,
-        public readonly string $bankCode,
-        public readonly float $amount,
-        public readonly string $currency,
-        public readonly string $variableSymbol,
+        public string $accountNumber,
+        public string $bankCode,
+        public float $amount,
+        public string $currency,
+        public string $variableSymbol,
     ) {}
 
     public function render(): string
