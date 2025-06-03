@@ -10,6 +10,8 @@ use Livewire\Attributes\Locked;
 
 trait HasContactSearch
 {
+    use FillsContactFieldsFromContactModel;
+
     public string $contact_search = '';
 
     /** @var Collection<int, Contact> */
@@ -42,17 +44,5 @@ trait HasContactSearch
         $this->fillCustomerFieldsFromContact($contact);
 
         $this->dispatch('close-contact-search-modal');
-    }
-
-    private function fillCustomerFieldsFromContact(Contact $contact): void
-    {
-        $this->contact_id = $contact->id;
-        $this->customer_company = $contact->name;
-        $this->customer_company_id = $contact->company_id;
-        $this->customer_vat_id = $contact->vat_id;
-        $this->customer_address = $contact->address;
-        $this->customer_city = $contact->city;
-        $this->customer_zip = $contact->zip;
-        $this->customer_country = $contact->country->value;
     }
 }

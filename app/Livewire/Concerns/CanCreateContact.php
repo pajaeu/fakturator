@@ -10,6 +10,8 @@ use Exception;
 
 trait CanCreateContact
 {
+    use FillsContactFieldsFromContactModel;
+
     public ?string $new_contact_company_id = null;
 
     public function addNewContact(): void
