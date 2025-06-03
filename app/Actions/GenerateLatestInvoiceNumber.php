@@ -16,7 +16,7 @@ final class GenerateLatestInvoiceNumber
             ->latest('number')
             ->first();
 
-        $invoiceCount = $latestInvoice ? ((int) mb_substr($latestInvoice->number, -4)) + 1 : 1;
+        $invoiceCount = $latestInvoice ? ((int) mb_substr((string) $latestInvoice->number, -4)) + 1 : 1;
 
         return sprintf('%d%02d%04d', now()->year, now()->month, $invoiceCount);
     }

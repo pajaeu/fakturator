@@ -268,6 +268,7 @@ final class Create extends Component
         $number = GenerateLatestInvoiceNumber::handle();
 
         $this->number = $number;
+
         $this->variable_symbol = $number;
 
         $this->currency = Currency::CZK->value;
