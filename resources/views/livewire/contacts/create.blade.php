@@ -1,3 +1,5 @@
+@section('title', __('New contact'))
+
 <div>
     <x-header>
         <x-slot:title>{{ __('New contact') }}</x-slot:title>

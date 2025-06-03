@@ -1,3 +1,5 @@
+@section('title', __('New account'))
+
 <x-auth-layout>
     <h1 class="mb-10 text-3xl font-semibold text-center">{{ __('New account') }}</h1>
     <form action="{{ route('register') }}" method="post">

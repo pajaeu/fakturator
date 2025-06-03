@@ -1,3 +1,5 @@
+@section('title', __('Settings'))
+
 <x-app-layout>
     <x-card class="mb-5 p-10">
         <div class="flex items-center">

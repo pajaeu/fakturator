@@ -1,3 +1,5 @@
+@section('title', __('Invoice number') . ' ' . $invoice->number)
+
 <div>
     <x-header>
         <x-slot:title>{{ __('Invoice') }}  {{ $invoice->number }}</x-slot:title>

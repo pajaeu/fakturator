@@ -11,6 +11,7 @@ use App\Models\Contact;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 final class Create extends Component
@@ -63,6 +64,7 @@ final class Create extends Component
         ];
     }
 
+	#[Layout('layouts.app', ['title' => 'Nový kontakt'])]
     public function render(): View
     {
         return view('livewire.contacts.create');

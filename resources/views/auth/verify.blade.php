@@ -1,3 +1,5 @@
+@section('title', __('Almost ready'))
+
 <x-auth-layout>
     <h1 class="mb-4 text-3xl font-semibold text-center">{{ __('Almost ready') }}</h1>
     <div class="mb-6 text-sm text-center">
