@@ -88,6 +88,7 @@ return [
 
     'available_locales' => [
         'cs',
+		'sk',
         'en',
     ],
 
