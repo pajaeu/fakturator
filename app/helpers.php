@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use App\Enums\Currency;
+use App\Models\Invoice;
 use App\Support\Price;
+use App\Support\QrPayment;
 
 if (! function_exists('price')) {
     function price(float $amount, string|Currency $currency): Price
@@ -19,5 +21,18 @@ if (! function_exists('price')) {
         }
 
         return new Price($amount, $currency);
+    }
+}
+
+if (! function_exists('invoice_qr_payment')) {
+    function invoice_qr_payment(Invoice $invoice): QrPayment
+    {
+        return new QrPayment(
+            $invoice->bankAccount->number,
+            $invoice->bankAccount->bank_code,
+            $invoice->total_with_vat,
+            $invoice->currency->value,
+            $invoice->variable_symbol
+        );
     }
 }

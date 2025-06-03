@@ -44,7 +44,7 @@
                                 <x-table.action-dropdown>
                                     <x-slot:items>
                                         <x-table.action-dropdown.item href="{{ route('invoices.edit', ['invoice' => $invoice]) }}" :link="true" wire:navigate>{{ __('Edit') }}</x-table.action-dropdown.item>
-                                        <x-table.action-dropdown.item href="{{ route('invoices.print', ['invoice' => $invoice]) }}" :link="true" target="_blank">{{ __('Print') }}</x-table.action-dropdown.item>
+                                        <x-table.action-dropdown.item href="{{ route('invoices.print', ['invoice' => $invoice]) }}" :link="true" target="_blank">{{ __('Print PDF') }}</x-table.action-dropdown.item>
                                         <x-table.action-dropdown.item href="{{ route('invoices.download', ['invoice' => $invoice]) }}" :link="true">{{ __('Download') }}</x-table.action-dropdown.item>
                                         <x-table.action-dropdown.item wire:click="delete({{ $invoice->id }})" wire:confirm="{{ __('Are you sure you want to delete this record?') }}">{{ __('Delete') }}</x-table.action-dropdown.item>
                                     </x-slot:items>

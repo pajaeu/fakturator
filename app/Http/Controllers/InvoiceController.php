@@ -25,9 +25,9 @@ final class InvoiceController
     private function getPdf(Invoice $invoice): PdfBuilder
     {
         $name = Str::of(implode('-', [
-			$invoice->number,
-			now()->format('d-m-Y')
-		]))
+            $invoice->number,
+            now()->format('d-m-Y'),
+        ]))
             ->lower()
             ->slug()
             ->toString();

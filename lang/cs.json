@@ -293,6 +293,7 @@
 	"Slovakia": "Slovensko",
 	"Send via email": "Odeslat -e-mailem",
 	"Print": "Vytisknout",
+	"Print PDF": "Vytisknout PDF",
 	"Download": "Stáhnout",
 	"Search in contacts": "Hledat v kontaktech",
 	"No contact found": "Nebyl nalezen žádný kontakt",
@@ -347,5 +348,7 @@
 	"Invoice number": "Faktura č.",
 	"Invoice - tax document number": "Faktura - daňový doklad č.",
 	"Non-payer of VAT": "Neplátce DPH",
-	"Total to be paid": "Celkem k úhradě"
+	"Total to be paid": "Celkem k úhradě",
+	"Generated in the Fakturátor app": "Vygenerováno systémem Fakturátor",
+	"QR payment": "QR platba"
 }

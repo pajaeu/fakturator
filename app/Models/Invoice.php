@@ -76,9 +76,9 @@ final class Invoice extends Model
         return $this->belongsTo(User::class);
     }
 
-	/** @return BelongsTo<BankAccount, $this> */
-	public function bankAccount(): BelongsTo
-	{
-		return $this->belongsTo(BankAccount::class);
-	}
+    /** @return BelongsTo<BankAccount, $this> */
+    public function bankAccount(): BelongsTo
+    {
+        return $this->belongsTo(BankAccount::class);
+    }
 }
