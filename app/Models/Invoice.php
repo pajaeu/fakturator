@@ -44,6 +44,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read Contact $contact
  * @property PaymentMethod $payment_method
  * @property int|null $bank_account_id
+ * @property-read BankAccount|null $bankAccount
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property int $user_id
@@ -74,4 +75,10 @@ final class Invoice extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+	/** @return BelongsTo<BankAccount, $this> */
+	public function bankAccount(): BelongsTo
+	{
+		return $this->belongsTo(BankAccount::class);
+	}
 }

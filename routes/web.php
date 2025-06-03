@@ -10,6 +10,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/invoices', App\Livewire\Invoices\Index::class)->name('invoices.index');
     Route::get('/invoice/new', App\Livewire\Invoices\Create::class)->name('invoices.create');
     Route::get('/invoice/edit/{invoice}', App\Livewire\Invoices\Edit::class)->name('invoices.edit');
+    Route::get('/invoice/pdf/{invoice}', [App\Http\Controllers\InvoiceController::class, 'print'])->name('invoices.print');
+    Route::get('/invoice/download/{invoice}', [App\Http\Controllers\InvoiceController::class, 'download'])->name('invoices.download');
 
     Route::get('/contacts', App\Livewire\Contacts\Index::class)->name('contacts.index');
     Route::get('/contact/new', App\Livewire\Contacts\Create::class)->name('contacts.create');

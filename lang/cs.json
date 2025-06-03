@@ -319,7 +319,7 @@
 	"Assigned contact": "Přiřazený kontakt",
 	"Enter other data manually": "Zadat ostatní údaje ručně",
 	"Edit contact": "Upravit kontakt",
-	"Bank account": "Bankovní účty",
+	"Bank account": "Bankovní účet",
 	"Bank code": "Kód banky",
 	"Add new account": "Přidat bankovní účet",
 	"default account": "výchozí účet",
@@ -343,5 +343,9 @@
 	"Invoice": "Faktura",
 	"Edit invoice": "Upravit fakturu",
 	"Edit on invoice": "Upravit na faktuře",
-	"Cancel editing": "Zrušit úpravy"
+	"Cancel editing": "Zrušit úpravy",
+	"Invoice number": "Faktura č.",
+	"Invoice - tax document number": "Faktura - daňový doklad č.",
+	"Non-payer of VAT": "Neplátce DPH",
+	"Total to be paid": "Celkem k úhradě"
 }
