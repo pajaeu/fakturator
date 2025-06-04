@@ -46,8 +46,14 @@
                         <x-table.column align="right">
                             <x-table.action-dropdown>
                                 <x-slot:items>
-                                    <x-table.action-dropdown.item href="{{ route('contacts.edit', ['contact' => $contact]) }}" :link="true" wire:navigate>{{ __('Edit') }}</x-table.action-dropdown.item>
-                                    <x-table.action-dropdown.item wire:click="delete({{ $contact->id }})" wire:confirm="{{ __('Are you sure you want to delete this record?') }}">{{ __('Delete') }}</x-table.action-dropdown.item>
+                                    <x-table.action-dropdown.item href="{{ route('contacts.edit', ['contact' => $contact]) }}" :link="true" wire:navigate>
+                                        <x-icons.pencil class="size-5 text-blue-600"/>
+                                        <span>{{ __('Edit') }}</span>
+                                    </x-table.action-dropdown.item>
+                                    <x-table.action-dropdown.item wire:click="delete({{ $contact->id }})" wire:confirm="{{ __('Are you sure you want to delete this record?') }}">
+                                        <x-icons.trash class="size-5 text-blue-600"/>
+                                        <span>{{ __('Delete') }}</span>
+                                    </x-table.action-dropdown.item>
                                 </x-slot:items>
                             </x-table.action-dropdown>
                         </x-table.column>
