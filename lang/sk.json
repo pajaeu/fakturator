@@ -354,5 +354,6 @@
     "Simple online invoicing system": "Jednoduchý systém fakturácie online",
     "Monthly overview": "Mesačný prehľad",
     "Recent invoices": "Posledné faktúry",
-    "statistics are being calculated each hour": "štatistiky sa počítajú každú hodinu"
+    "statistics are being calculated each hour": "štatistiky sa počítajú každú hodinu",
+    "Recalculate statistics": "Prepočítať štatistiky"
 }

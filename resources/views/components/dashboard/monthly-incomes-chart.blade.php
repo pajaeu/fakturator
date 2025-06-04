@@ -35,11 +35,14 @@
                 },
                 legend: {
                     show: false
+                },
+                markers: {
+                    size: 8,
                 }
             };
 
             this.chart = new ApexCharts(this.$refs.container, options);
-            this.chart.render();
+            $nextTick(() => { this.chart.render(); });
         }
     }'
 >

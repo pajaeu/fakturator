@@ -1,12 +1,8 @@
 @section('title', __('Simple online invoicing system'))
 
 <x-app-layout>
-    <x-card class="mb-12">
-        <h2 class="mb-4 text-lg font-semibold">{{ __('Monthly overview') }}</h2>
-        <x-dashboard.monthly-incomes-chart/>
-        <p class="text-end text-sm text-gray-400">{{ __('statistics are being calculated each hour') }}</p>
-    </x-card>
-    <div>
+    <livewire:dashboard.monthly-incomes-widget/>
+    <div class="mt-12">
         <h2 class="mb-4 text-xl font-semibold text-center">{{ __('Recent invoices') }}</h2>
         <x-table card="true">
             @if($invoices->isNotEmpty())
