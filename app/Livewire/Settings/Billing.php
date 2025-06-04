@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Settings;
 
 use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
+use App\Enums\Country;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\User;
 use Exception;
@@ -85,7 +86,10 @@ final class Billing extends Component
             'billing_company' => 'required|string|min:3|max:255',
             'billing_address' => 'required|string|min:3|max:255',
             'billing_city' => 'required|string|min:2|max:255',
-            'billing_country' => 'required|string|size:2',
+            'billing_country' => [
+                'required',
+                Rule::in(Country::cases()),
+            ],
             'billing_zip' => 'required|string|min:5|max:255',
         ];
     }
