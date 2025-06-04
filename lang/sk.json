@@ -356,5 +356,6 @@
     "Recent invoices": "Posledné faktúry",
     "statistics are being calculated each hour": "štatistiky sa počítajú každú hodinu",
     "Recalculate statistics": "Prepočítať štatistiky",
-    "User with this Company ID already exists": "Používateľ s týmto ID spoločnosti (IČO) už existuje"
+    "User with this Company ID already exists": "Používateľ s týmto ID spoločnosti (IČO) už existuje",
+    "All invoices": "Všetky faktúry"
 }
