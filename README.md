@@ -16,7 +16,7 @@
 - Export invoices as PDF
 - Simple, clean UI
 
-## Producttion
+## Production
 
 Application is currently hosted here https://fakturator.eu/
 
