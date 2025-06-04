@@ -2,7 +2,7 @@
 
 <div>
     <x-header>
-        <x-slot:title>{{ __('Invoices') }}</x-slot:title>
+        <x-slot:title>{{ __('Issued invoices') }}</x-slot:title>
         <x-slot:buttons>
             <x-button href="{{ route('invoices.create') }}" :link="true" wire:navigate>
                 <x-icons.plus class="size-4"/>
