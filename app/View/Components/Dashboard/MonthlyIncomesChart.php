@@ -12,9 +12,6 @@ use Illuminate\View\Component;
 
 final class MonthlyIncomesChart extends Component
 {
-    /**
-     * Get the view / contents that represent the component.
-     */
     public function render(): View
     {
         $labels = collect(range(1, 12))->map(function ($monthNumber) {
