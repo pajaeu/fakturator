@@ -21,7 +21,7 @@ final class MonthlyIncomesChart extends Component
             return Str::ucfirst(__(now()->startOfYear()->month((int) $monthNumber)->translatedFormat('F')));
         });
 
-        $data = Cache::remember('monthly-incomes-'.auth()->id(), 3600, function () {
+        $data = Cache::remember('monthly_incomes_'.auth()->id(), 3600, function () {
             $data = DB::table('invoices')->selectRaw('strftime("%m", issued_at) as month, SUM(total_with_vat) as total')
                 ->whereYear('issued_at', now()->year)
                 ->groupBy('month')
