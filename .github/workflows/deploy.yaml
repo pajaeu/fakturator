@@ -22,6 +22,7 @@ jobs:
           ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
             cd public_html
             git pull origin main
+            alias php="/usr/bin/php8.3"
             composer install --no-dev --optimize-autoloader
             php artisan migrate --force
             php artisan optimize:clear
