@@ -12,11 +12,11 @@
             <x-form.input-error name="company_id"/>
         </div>
         <div class="mb-5">
-            <x-form.input type="password" name="password" placeholder="{{ __('Password') }} *" @class(['border-red-500' => $errors->has('password')])/>
+            <x-form.input type="password" name="password" placeholder="{{ __('Password') }} *" @class(['border-red-500' => $errors->has('password')]) autocomplete="off"/>
             <x-form.input-error name="password"/>
         </div>
         <div class="mb-5">
-            <x-form.input type="password" name="password_confirmation" placeholder="{{ __('Confirm password') }} *" @class(['border-red-500' => $errors->has('password_confirmation')])/>
+            <x-form.input type="password" name="password_confirmation" placeholder="{{ __('Confirm password') }} *" @class(['border-red-500' => $errors->has('password_confirmation')]) autocomplete="off"/>
             <x-form.input-error name="password_confirmation"/>
         </div>
         <div>
