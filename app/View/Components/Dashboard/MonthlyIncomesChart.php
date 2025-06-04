@@ -6,6 +6,7 @@ namespace App\View\Components\Dashboard;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 final class MonthlyIncomesChart extends Component
@@ -22,7 +23,7 @@ final class MonthlyIncomesChart extends Component
             ->pluck('total', 'month');
 
         $labels = collect(range(1, 12))->map(function ($monthNumber) {
-            return __(now()->startOfYear()->month((int) $monthNumber)->translatedFormat('F'));
+            return Str::ucfirst(__(now()->startOfYear()->month((int) $monthNumber)->translatedFormat('F')));
         });
 
         $data = collect(range(1, 12))->map(function ($month) use ($data) {

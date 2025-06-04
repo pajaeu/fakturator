@@ -23,6 +23,13 @@
                 xaxis: {
                     categories: @json($labels)
                 },
+                yaxis: {
+                    labels: {
+                        formatter: function (value) {
+                            return Number(value).toLocaleString() + " Kč";
+                        }
+                    }
+                },
                 dataLabels: {
                     enabled: false
                 },
