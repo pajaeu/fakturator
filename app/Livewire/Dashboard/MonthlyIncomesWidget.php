@@ -13,6 +13,8 @@ final class MonthlyIncomesWidget extends Component
     public function resetData(): void
     {
         Cache::forget('monthly_incomes_'.auth()->id());
+
+        $this->redirectRoute('dashboard', navigate: true);
     }
 
     public function render(): View
