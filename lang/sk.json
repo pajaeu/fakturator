@@ -355,5 +355,6 @@
     "Monthly overview": "Mesačný prehľad",
     "Recent invoices": "Posledné faktúry",
     "statistics are being calculated each hour": "štatistiky sa počítajú každú hodinu",
-    "Recalculate statistics": "Prepočítať štatistiky"
+    "Recalculate statistics": "Prepočítať štatistiky",
+    "User with this Company ID already exists": "Používateľ s týmto ID spoločnosti (IČO) už existuje"
 }

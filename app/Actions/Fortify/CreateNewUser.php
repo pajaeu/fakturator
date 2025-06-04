@@ -32,8 +32,11 @@ final class CreateNewUser implements CreatesNewUsers
             'company_id' => Rule::when((bool) $input['company_id'], [
                 'required',
                 'digits:8',
+                Rule::unique(User::class),
             ]),
             'password' => $this->passwordRules(),
+        ], [
+            'company_id.unique' => __('User with this Company ID already exists'),
         ])->validate();
 
         return User::create([
