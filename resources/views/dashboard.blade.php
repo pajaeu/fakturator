@@ -3,7 +3,7 @@
 <x-app-layout>
     <livewire:dashboard.monthly-incomes-widget/>
     <div class="mt-12">
-        <h2 class="mb-4 text-xl font-semibold text-center">{{ __('Recent invoices') }}</h2>
+        <h2 class="mb-4 text-xl font-semibold">{{ __('Recent invoices') }}</h2>
         <x-table card="true">
             @if($invoices->isNotEmpty())
                 <x-slot:head>
