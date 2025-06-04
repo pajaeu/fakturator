@@ -1,8 +1,8 @@
-@section('title', __('Invoice number') . ' ' . $invoice->number)
+@section('title', __('Edit invoice'))
 
 <div>
     <x-header>
-        <x-slot:title>{{ __('Invoice') }}  {{ $invoice->number }}</x-slot:title>
+        <x-slot:title>{{ __('Edit invoice') }}  #{{ $invoice->number }}</x-slot:title>
         <x-slot:buttons>
             <x-button href="{{ route('invoices.index') }}" :link="true" variant="outline" wire:navigate>
                 <x-icons.arrow-back class="size-4"/>
