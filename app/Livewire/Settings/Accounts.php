@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Settings;
 
+use App\Actions\GetSwiftCodeFromBankCode;
 use App\Models\BankAccount;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -20,6 +21,11 @@ final class Accounts extends Component
     public ?string $iban = null;
 
     public ?string $swift = null;
+
+    public function updatedBankCode(string $value): void
+    {
+        $this->swift = GetSwiftCodeFromBankCode::handle($value);
+    }
 
     public function addNewAccount(): void
     {
