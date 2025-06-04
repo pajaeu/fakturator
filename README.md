@@ -16,11 +16,15 @@
 - Export invoices as PDF
 - Simple, clean UI
 
+## Producttion
+
+Application is currently hosted here https://fakturator.eu/
+
 ## Installation
 
 Fakturátor is a regular Laravel application, it's build on top of Laravel 12 and uses Livewire / Tailwind CSS for the frontend.
 
 In terms of local development, you can use the following requirements:
 
-- PHP 8.3 - with SQLite, GD, and other common extensions.
+- PHP 8.3 - with SQLite, and other common extensions.
 - Node.js 16 or more recent.
