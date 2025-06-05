@@ -20,6 +20,7 @@ final class MonthlyIncomesChart extends Component
 
         $data = Cache::remember('monthly_incomes_'.auth()->id(), 3600, function () {
             $data = DB::table('invoices')->selectRaw('strftime("%m", issued_at) as month, SUM(total_with_vat) as total')
+                ->where('user_id', auth()->id())
                 ->whereYear('issued_at', now()->year)
                 ->groupBy('month')
                 ->orderBy('month')
