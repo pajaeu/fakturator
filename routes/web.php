@@ -10,7 +10,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', App\Http\Controllers\DashboardController::class)->name('dashboard');
 
     Route::get('/invoices', App\Livewire\Invoices\Index::class)->name('invoices.index');
-    Route::get('/invoice/new', App\Livewire\Invoices\Create::class)->name('invoices.create');
+    Route::get('/invoice/new', App\Livewire\Invoices\Create::class)->name('invoices.create')->middleware(App\Http\Middleware\EnsureUserHasFilledBillingSettings::class);
     Route::get('/invoice/edit/{invoice}', App\Livewire\Invoices\Edit::class)->name('invoices.edit');
     Route::get('/invoice/pdf/{invoice}', [App\Http\Controllers\InvoiceController::class, 'print'])->name('invoices.print');
     Route::get('/invoice/download/{invoice}', [App\Http\Controllers\InvoiceController::class, 'download'])->name('invoices.download');
