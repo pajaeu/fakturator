@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 
+Route::view('/', 'landing')->name('landing');
+
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/', App\Http\Controllers\DashboardController::class)->name('dashboard');
+    Route::get('/dashboard', App\Http\Controllers\DashboardController::class)->name('dashboard');
 
     Route::get('/invoices', App\Livewire\Invoices\Index::class)->name('invoices.index');
     Route::get('/invoice/new', App\Livewire\Invoices\Create::class)->name('invoices.create');
