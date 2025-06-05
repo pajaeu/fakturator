@@ -41,7 +41,6 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->json('items')->nullable();
             $table->string('payment_method')->default(App\Enums\PaymentMethod::CASH);
-            $table->foreignId('bank_account_id')->index()->nullable()->constrained()->nullOnDelete();
             $table->foreignId('contact_id')->index()->nullable()->constrained()->nullOnDelete();
             $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
             $table->timestamps();
