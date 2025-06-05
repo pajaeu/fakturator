@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('vat_id')->nullable()->after('company_id')->unique()->index();
             $table->string('billing_company')->nullable()->after('vat_id');
             $table->string('billing_address')->nullable()->after('billing_company');
-            $table->string('billing_city')->nullable()->after('billing_country');
+            $table->string('billing_city')->nullable()->after('billing_address');
             $table->string('billing_country')->nullable()->after('billing_city');
             $table->string('billing_zip')->nullable()->after('billing_country');
         });
