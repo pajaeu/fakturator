@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('number')->index();
             $table->string('variable_symbol')->nullable();
-            $table->date('issued_at');
+            $table->date('issued_at')->index();
             $table->date('due_at');
             $table->double('total');
             $table->double('total_with_vat');
@@ -40,9 +40,9 @@ return new class extends Migration
             $table->string('customer_email')->nullable();
             $table->text('note')->nullable();
             $table->json('items')->nullable();
-            $table->string('payment_method')->default(App\Enums\PaymentMethod::CASH);
-            $table->foreignId('contact_id')->index()->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
+            $table->string('payment_method')->index()->default(App\Enums\PaymentMethod::CASH);
+            $table->foreignId('contact_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
 
             $table->unique(['number', 'user_id']);

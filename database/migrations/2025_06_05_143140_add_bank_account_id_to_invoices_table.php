@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('invoices', function (Blueprint $table) {
-            $table->foreignId('bank_account_id')->after('payment_method')->index()->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('bank_account_id')->after('payment_method')->nullable()->constrained()->nullOnDelete();
         });
     }
 };

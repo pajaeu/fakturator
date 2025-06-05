@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('zip');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->foreignId('user_id')->index()->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
 
             $table->unique(['company_id', 'user_id']);
