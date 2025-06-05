@@ -22,7 +22,7 @@
             <div class="flex gap-4 mb-4">
                 <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Company ID') }}</label>
                 <div class="w-full">
-                    <x-form.input wire:model.blur="company_id" @class(['border-red-500' => $errors->has('company_id')])/>
+                    <x-form.input wire:model.live.debounce.250ms="company_id" @class(['border-red-500' => $errors->has('company_id')])/>
                     <x-form.input-error name="company_id"/>
                     <div class="py-2 text-sm text-gray-500">{{ __('Enter the company ID, other data will be automatically filled in from the ARES database') }}</div>
                 </div>
