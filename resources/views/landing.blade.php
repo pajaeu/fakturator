@@ -17,8 +17,8 @@
             </div>
             <div class="ms-auto md:ms-6 flex items-center gap-2">
                 @auth
-                    <a href="{{ route('dashboard') }}" class="cursor-pointer group flex py-2 px-4 rounded-full border border-gray-100 items-center gap-3 hover:border-gray-200 transition-colors">
-                        <div class="size-8 rounded-full transition-colors overflow-hidden">
+                    <a href="{{ route('dashboard') }}" class="cursor-pointer group flex py-1 md:py-2 px-2 md:px-4 rounded-full md:border border-gray-100 items-center gap-3 hover:border-gray-200 transition-colors">
+                        <div class="hidden md:block size-8 rounded-full transition-colors overflow-hidden">
                             <img src="{{ auth()->user()->avatarUrl() }}" alt="Avatar" class="size-full">
                         </div>
                         <div>
@@ -27,7 +27,7 @@
                         </div>
                     </a>
                 @else
-                    <x-button href="{{ route('login') }}" :link="true" variant="outline">
+                    <x-button href="{{ route('login') }}" :link="true" variant="outline" class="hidden md:flex">
                         <span>{{ __('Log In') }}</span>
                     </x-button>
                     <x-button href="{{ route('register') }}" :link="true">
