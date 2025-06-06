@@ -29,8 +29,6 @@ final class Password extends Component
         $user = auth()->user();
 
         $this->user = $user;
-
-        $this->pushNotification(__('Success'));
     }
 
     public function save(): void
@@ -39,6 +37,8 @@ final class Password extends Component
         $data = $this->validate();
 
         $this->user->update($data);
+
+        $this->pushNotification(__('Success'));
 
         $this->resetExcept('user');
     }
