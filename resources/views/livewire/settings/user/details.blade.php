@@ -21,6 +21,9 @@
             </div>
         </div>
     </x-card>
+    <div class="md:flex md:justify-end">
+        <button wire:click="save" class="cursor-pointer py-3 px-6 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">{{ __('Save') }}</button>
+    </div>
     <x-card class="md:p-10">
         <h2 class="text-lg font-semibold mb-1">{{ __('Delete account') }}</h2>
         <p class="text-gray-500 mb-6">{{ __('Delete your account and all of its resources.') }}</p>
@@ -31,7 +34,4 @@
             </x-button>
         </div>
     </x-card>
-    <div class="mt-5 md:flex md:justify-end">
-        <button wire:click="save" class="cursor-pointer py-3 px-6 rounded-full text-white font-medium bg-blue-700 hover:bg-blue-800 transition-colors">{{ __('Save') }}</button>
-    </div>
 </div>
