@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::view('', 'settings')->name('index');
         Route::get('billing', App\Livewire\Settings\Billing::class)->name('billing');
         Route::get('accounts', App\Livewire\Settings\Accounts::class)->name('accounts');
+        Route::get('user/details', App\Livewire\Settings\User\Details::class)->name('user.details');
     });
 
     Route::post('/logout', App\Http\Controllers\Auth\LogoutController::class)->name('logout');

@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="ms-auto flex items-center gap-3">
-                <x-button variant="outline-gray">
+                <x-button href="{{ route('settings.user.details') }}" :link="true" variant="outline-gray">
                     <x-icons.pencil class="size-6 text-blue-600"/>
                     <span>{{ __('Edit account') }}</span>
                 </x-button>

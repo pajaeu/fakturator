@@ -398,5 +398,11 @@
 	"Unlimited invoices": "Neomezeně faktur",
 	"Advanced statistics": "Pokročilé statistiky",
 	"Custom integrations": "Vlastní integrace",
-	"Coming soon": "Připravujeme"
+	"Coming soon": "Připravujeme",
+	"User details": "Uživatelské údaje",
+	"Delete account": "Odstranění účtu",
+	"Delete your account and all of its resources.": "Odstraňte svůj účet a všechny jeho prostředky.",
+	"This action cannot be undone.": "Tuto akci nelze vrátit zpět.",
+	"Are you really sure you want to delete your account?": "Jste si jisti, že opravdu chcete odstranit svůj účet?",
+	"Confirm and delete account": "Potvrdit a odstranit účet"
 }

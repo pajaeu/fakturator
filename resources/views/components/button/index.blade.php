@@ -12,6 +12,7 @@
 	'text-white border-blue-600 bg-blue-600 hover:border-blue-700 hover:bg-blue-700' => $variant === 'primary',
 	'text-blue-600 border-blue-600 hover:text-white hover:bg-blue-600' => $variant === 'outline',
 	'text-gray-600 border-gray-200 hover:text-gray-800 hover:border-gray-300 hover:bg-gray-100' => $variant === 'outline-gray',
+	'text-white border-red-600 bg-red-600 hover:border-red-700 hover:bg-red-700' => $variant === 'danger',
 ]) }}>
     {{ $slot }}
 </{{ $tag }}>
