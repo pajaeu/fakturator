@@ -30,6 +30,22 @@ final class Index extends Component
         $this->selectAllInvoices = false;
     }
 
+    public function pay(int $id): void
+    {
+        $invoice = Invoice::query()->find($id);
+
+        if (! $invoice) {
+            return;
+        }
+
+        $invoice->update([
+            'is_paid' => true,
+            'paid_at' => now(),
+        ]);
+
+        $this->pushNotification(__('Paid'));
+    }
+
     public function delete(int $id): void
     {
         $invoice = Invoice::query()->find($id);

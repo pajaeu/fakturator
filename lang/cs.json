@@ -412,5 +412,8 @@
 	"Success": "Úspěch",
 	"Something wrong occurred": "Někde nastala chyba",
 	"Deleted": "Smazáno",
-	"Recalculated": "Přepočítáno"
+	"Recalculated": "Přepočítáno",
+	"Paid": "Zaplaceno",
+	"Pay": "Zaplatit",
+	"Paid at": "Datum platby"
 }

@@ -40,6 +40,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $customer_email
  * @property string|null $note
  * @property array<int, mixed>|null $items
+ * @property bool $is_paid
+ * @property Carbon|null $paid_at
  * @property int|null $contact_id
  * @property-read Contact $contact
  * @property PaymentMethod $payment_method
@@ -59,6 +61,8 @@ final class Invoice extends Model
         'total' => 'float',
         'items' => 'array',
         'currency' => Currency::class,
+        'is_paid' => 'boolean',
+        'paid_at' => 'date',
         'payment_method' => PaymentMethod::class,
         'supplier_country' => Country::class,
         'customer_country' => Country::class,

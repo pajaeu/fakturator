@@ -57,6 +57,12 @@
                                             <x-icons.download class="size-5 text-blue-600"/>
                                             <span>{{ __('Download') }}</span>
                                         </x-table.action-dropdown.item>
+                                        @if(!$invoice->is_paid)
+                                            <x-table.action-dropdown.item wire:click="pay({{ $invoice->id }})">
+                                                <x-icons.cash class="size-5 text-blue-600"/>
+                                                <span>{{ __('Pay') }}</span>
+                                            </x-table.action-dropdown.item>
+                                        @endif
                                         <x-table.action-dropdown.item wire:click="delete({{ $invoice->id }})" wire:confirm="{{ __('Are you sure you want to delete this record?') }}">
                                             <x-icons.trash class="size-5 text-blue-600"/>
                                             <span>{{ __('Delete') }}</span>
