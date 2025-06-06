@@ -107,10 +107,88 @@
                 </div>
             </x-container>
         </section>
+        <section id="pricelist" class="py-6 md:py-12">
+            <x-container>
+                <div class="text-sm text-center font-medium text-blue-600 mb-1">{{ __('How much does it cost?') }}</div>
+                <h2 class="text-3xl md:text-4xl font-semibold text-center mb-6">{{ __('Pricelist') }}</h2>
+                <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+                    <div class="rounded-lg rounded-t-lg p-8 ring-1 ring-gray-200 sm:mx-8 sm:rounded-b-none sm:p-10 lg:mx-0 lg:rounded-tr-none lg:rounded-bl-lg">
+                        <h3 class="text-sm font-semibold text-blue-600">Free</h3>
+                        <p class="mt-4 flex items-baseline gap-x-2">
+                            <span class="text-3xl font-semibold tracking-tight text-gray-800">{{ __('Always free') }}</span>
+                        </p>
+                        <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 sm:mt-10">
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('10 invoices/month') }}
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('Unlimited contacts') }}
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('Simple statistics') }}
+                            </li>
+                        </ul>
+                        <x-button href="{{ route('register') }}" :link="true" class="w-full justify-center mt-8" variant="outline">{{ __('Get started') }}</x-button>
+                    </div>
+                    <div class="relative rounded-lg p-8 shadow-lg ring-1 ring-gray-200 sm:p-10">
+                        <h3 class="text-sm font-semibold text-blue-600">Pro</h3>
+                        <p class="mt-4 flex items-baseline gap-x-2">
+                            <span class="text-3xl font-semibold tracking-tight">{{ __('2 €') }}</span>
+                            <span class="text-base text-gray-400">{{ __('/month') }}</span>
+                        </p>
+                        <ul role="list" class="mt-8 space-y-3 text-sm/6 sm:mt-10">
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('Unlimited invoices') }}
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('Unlimited contacts') }}
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('Advanced statistics') }}
+                                <span class="py-1 px-2 text-xs uppercase border rounded-full border-gray-200">{{ __('Coming soon') }}</span>
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('API') }}
+                                <span class="py-1 px-2 text-xs uppercase border rounded-full border-gray-200">{{ __('Coming soon') }}</span>
+                            </li>
+                            <li class="flex gap-x-3">
+                                <svg class="h-6 w-5 flex-none text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ __('Custom integrations') }}
+                                <span class="py-1 px-2 text-xs uppercase border rounded-full border-gray-200">{{ __('Coming soon') }}</span>
+                            </li>
+                        </ul>
+                        <x-button href="{{ route('register') }}" :link="true" class="w-full justify-center mt-8">{{ __('Get started') }}</x-button>
+                    </div>
+                </div>
+            </x-container>
+        </section>
         <section id="faq" class="py-6 md:py-12">
             <x-container>
                 <div class="text-sm text-center font-medium text-blue-600 mb-1">{{ __('What do people ask?') }}</div>
-                <h2 class="text-3xl md:text-4xl font-semibold text-center mb-6">{{ __('Frequently Asked Questions') }}</h2>
+                <h2 class="text-3xl md:text-4xl font-semibold text-center mb-6 md:mb-12">{{ __('Frequently Asked Questions') }}</h2>
                 <div class="mx-auto max-w-4xl">
                     <div class="pb-4 mb-6 border-b border-gray-200" x-data="{ show: false }">
                         <button @click="show = !show" class="cursor-pointer w-full flex items-center justify-between mb-2">
@@ -118,7 +196,7 @@
                             <x-icons.plus class="size-5" x-show="!show" x-cloak/>
                             <x-icons.minus class="size-5" x-show="show" x-cloak/>
                         </button>
-                        <p class="md:text-lg mb-2" x-show="show" x-cloak>{{ __('The basic version is completely free. We are also preparing advanced features in the paid plan.') }}</p>
+                        <p class="md:text-lg mb-2" x-show="show" x-cloak>{{ __('Yes, we offer 10 free invoices per month. If you need more, you can activate a paid plan for 2 EUR per month at any time.') }}</p>
                     </div>
                     <div class="pb-4 mb-6 border-b border-gray-200" x-data="{ show: false }">
                         <button @click="show = !show" class="cursor-pointer w-full flex items-center justify-between mb-2">

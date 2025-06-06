@@ -371,7 +371,7 @@
 	"Frequently Asked Questions": "Časté dotazy",
 	"What do people ask?": "Na co se lidé ptají?",
 	"Is Fakturátor free?": "Je Fakturátor zdarma?",
-	"The basic version is completely free. We are also preparing advanced features in the paid plan.": "Základní verze je zcela zdarma. Připravujeme i rozšířené funkce v placeném plánu.",
+	"Yes, we offer 10 free invoices per month. If you need more, you can activate a paid plan for 2 EUR per month at any time.": "Ano, nabízíme zdarma 10 faktur měsíčně. Pokud potřebuješ více, můžeš si kdykoliv aktivovat placený tarif za 49 Kč měsíčně.",
 	"Is installation necessary?": "Je nutná instalace?",
 	"No. Invoicing is fully online - just use a web browser.": "Ne. Fakturátor běží plně online – stačí webový prohlížeč.",
 	"Is the app safe?": "Je aplikace bezpečná?",
@@ -386,5 +386,17 @@
 	"Save your customers so you don't have to copy their details again unnecessarily.": "Ukládej si své zákazníky, ať nemusíš zbytečně opisovat jejich údaje znovu.",
 	"Invoice history and management": "Historie a správa faktur",
 	"All your invoices are in one place, always available when you need them.": "Všechny faktury máš na jednom místě, vždy dostupné, kdykoliv je potřebuješ.",
-	"Billing settings have not been set up yet.": "Nejprve nastavte fakturační údaje."
+	"Billing settings have not been set up yet.": "Nejprve nastavte fakturační údaje.",
+	"How much does it cost?": "Kolik to stojí?",
+	"Pricelist": "Ceník",
+	"Always free": "Vždy zdarma",
+	"2 €": "49 Kč",
+	"/month": "/měsíčně",
+	"10 invoices/month": "10 faktur měsíčně",
+	"Unlimited contacts": "Neomezeně kontaktů",
+	"Simple statistics": "Jednoduché statistiky",
+	"Unlimited invoices": "Neomezeně faktur",
+	"Advanced statistics": "Pokročilé statistiky",
+	"Custom integrations": "Vlastní integrace",
+	"Coming soon": "Připravujeme"
 }
