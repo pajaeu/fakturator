@@ -36,19 +36,38 @@
             </div>
         </div>
     </x-card>
-    <x-card class="md:p-10">
-        <div class="grid grid-cols-3 gap-5 md:gap-10">
-            <a href="{{ route('settings.billing') }}" wire:navigate class="flex justify-center items-center p-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+    <x-card class="mb-5 md:p-10">
+        <div class="flex justify-between items-center">
+            <div>
+                <h2 class="text-lg font-semibold mb-1">{{ __('Your current tier') }}</h2>
+                <div class="text-3xl font-semibold text-blue-600">{{ auth()->user()->tier->label() }}</div>
+            </div>
+            <div class="text-end">
+                @if(auth()->user()->tier === \App\Enums\UserTier::PRO)
+                @else
+                    <x-button class="inline-flex opacity-50">{{ __('Upgrade to Pro') }}</x-button>
+                    <p class="mt-2 text-gray-500 text-sm">{{ __('Upgrading to the Pro version is currently not possible.') }}</p>
+                @endif
+            </div>
+        </div>
+    </x-card>
+    <x-card class="mb-5 md:p-10">
+        <div class="grid grid-cols-3 gap-5 md:gap-8">
+            <a href="{{ route('settings.billing') }}" wire:navigate class="flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.user-rounded class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('Billing settings') }}</div>
             </a>
-            <a href="{{ route('settings.accounts') }}" wire:navigate class="flex justify-center items-center p-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+            <a href="{{ route('settings.accounts') }}" wire:navigate class="flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.bank class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('Bank accounts') }}</div>
             </a>
-            <div class="opacity-50 flex justify-center items-center p-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+            <div class="opacity-50 flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.circle-percentage class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('VAT rates') }}</div>
+            </div>
+            <div class="opacity-50 flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+                <x-icons.api class="size-10 text-blue-600"/>
+                <div class="text-2xl">{{ __('API') }}</div>
             </div>
         </div>
     </x-card>

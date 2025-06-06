@@ -405,5 +405,8 @@
 	"This action cannot be undone.": "Tuto akci nelze vrátit zpět.",
 	"Are you really sure you want to delete your account?": "Jste si jisti, že opravdu chcete odstranit svůj účet?",
 	"Confirm and delete account": "Potvrdit a odstranit účet",
-	"Change your password": "Změnit heslo"
+	"Change your password": "Změnit heslo",
+	"Your current tier": "Vaš aktuální plán",
+	"Upgrade to Pro": "Přechod na verzi Pro",
+	"Upgrading to the Pro version is currently not possible.": "Přechod na verzi Pro momentálně není možný."
 }
