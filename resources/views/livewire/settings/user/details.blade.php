@@ -12,7 +12,7 @@
     </x-header>
     <x-card class="mb-6">
         <div class="mx-auto max-w-3xl">
-            <div class="flex gap-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                 <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Email') }}</label>
                 <div class="w-full">
                     <x-form.input wire:model.blur="email" @class(['border-red-500' => $errors->has('email')])/>

@@ -12,14 +12,14 @@
     </x-header>
     <x-card class="mb-6">
         <div class="mx-auto max-w-3xl">
-            <div class="flex gap-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                 <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Password') }}</label>
                 <div class="w-full">
                     <x-form.input type="password" wire:model.blur="password" @class(['border-red-500' => $errors->has('password')]) autocomplete="off"/>
                     <x-form.input-error name="password"/>
                 </div>
             </div>
-            <div class="flex gap-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                 <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Confirm password') }}</label>
                 <div class="w-full">
                     <x-form.input type="password" wire:model.blur="password_confirmation" @class(['border-red-500' => $errors->has('password_confirmation')]) autocomplete="off"/>

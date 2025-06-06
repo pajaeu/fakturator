@@ -1,8 +1,8 @@
 @section('title', __('Settings'))
 
 <x-app-layout>
-    <x-card class="mb-5 p-10">
-        <div class="flex items-center">
+    <x-card class="mb-5 md:p-10">
+        <div class="flex flex-col md:flex-row md:items-center">
             <div class="flex items-center gap-5 lg:gap-10">
                 <img src="{{ auth()->user()->avatarUrl() }}" alt="Avatar" class="size-20 lg:size-24 rounded-full">
                 <div>
@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ms-auto flex items-center gap-3">
+            <div class="mt-4 md:mt-0 md:ms-auto flex flex-col md:flex-row items-start md:items-center gap-3">
                 <x-button href="{{ route('settings.user.details') }}" :link="true" variant="outline-gray">
                     <x-icons.pencil class="size-6 text-blue-600"/>
                     <span>{{ __('Edit account') }}</span>
@@ -52,20 +52,20 @@
         </div>
     </x-card>
     <x-card class="mb-5 md:p-10">
-        <div class="grid grid-cols-3 gap-5 md:gap-8">
-            <a href="{{ route('settings.billing') }}" wire:navigate class="flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+            <a href="{{ route('settings.billing') }}" wire:navigate class="flex justify-center items-center py-5 md:py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.user-rounded class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('Billing settings') }}</div>
             </a>
-            <a href="{{ route('settings.accounts') }}" wire:navigate class="flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+            <a href="{{ route('settings.accounts') }}" wire:navigate class="flex justify-center items-center py-5 md:py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.bank class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('Bank accounts') }}</div>
             </a>
-            <div class="opacity-50 flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+            <div class="opacity-50 flex justify-center items-center py-5 md:py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.circle-percentage class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('VAT rates') }}</div>
             </div>
-            <div class="opacity-50 flex justify-center items-center py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+            <div class="opacity-50 flex justify-center items-center py-5 md:py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.api class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('API') }}</div>
             </div>

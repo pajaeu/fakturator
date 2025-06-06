@@ -7,6 +7,7 @@
 ])
 
 <div {{ $attributes->class([
+	'overflow-x-auto md:overflow-x-visible',
 	'rounded-lg border border-gray-200' => $card
 ]) }}>
     @if($before)

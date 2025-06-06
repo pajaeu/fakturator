@@ -12,7 +12,7 @@
     </x-header>
     <x-card>
         <div x-data="{ show: $wire.entangle('otherDataFilled') }" class="mx-auto max-w-3xl">
-            <div class="flex gap-4 mb-4">
+            <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                 <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Company ID') }}</label>
                 <div class="w-full">
                     <x-form.input wire:model.live.debounce.250ms="company_id" @class(['border-red-500' => $errors->has('company_id')])/>
@@ -25,56 +25,56 @@
                 </div>
             </div>
             <div x-show="show" x-cloak>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Company name / Full name') }}</label>
                     <div class="w-full">
                         <x-form.input wire:model.blur="name" @class(['border-red-500' => $errors->has('name')])/>
                         <x-form.input-error name="name"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('VAT ID') }}</label>
                     <div class="w-full">
                         <x-form.input wire:model.blur="vat_id" @class(['border-red-500' => $errors->has('vat_id')])/>
                         <x-form.input-error name="vat_id"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Email') }}</label>
                     <div class="w-full">
                         <x-form.input wire:model.blur="email" @class(['border-red-500' => $errors->has('email')])/>
                         <x-form.input-error name="email"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Phone') }}</label>
                     <div class="w-full">
                         <x-form.input wire:model.blur="phone" @class(['border-red-500' => $errors->has('phone')])/>
                         <x-form.input-error name="phone"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Address') }}</label>
                     <div class="w-full">
                         <x-form.input wire:model.blur="address" @class(['border-red-500' => $errors->has('address')])/>
                         <x-form.input-error name="address"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('City') }}</label>
                     <div class="w-full">
                         <x-form.input wire:model.blur="city" @class(['border-red-500' => $errors->has('city')])/>
                         <x-form.input-error name="city"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('ZIP') }}</label>
                     <div class="w-full">
                         <x-form.input wire:model.blur="zip" @class(['border-red-500' => $errors->has('zip')])/>
                         <x-form.input-error name="zip"/>
                     </div>
                 </div>
-                <div class="flex gap-4 mb-4">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4">
                     <label class="w-full md:pt-2 md:w-1/2 md:text-end">{{ __('Country') }}</label>
                     <div class="w-full">
                         <x-form.country-select wire:model.blur="country" @class(['border-red-500' => $errors->has('country')])/>
