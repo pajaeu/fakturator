@@ -199,7 +199,7 @@
                     <div class="flex flex-col md:flex-row gap-2 md:gap-4 mb-4">
                         <label class="w-full md:pt-2 md:w-1/3">{{ __('Paid at') }}</label>
                         <div class="w-full">
-                            <div x-data="{}" x-init="flatpickr($refs.input, { dateFormat: 'd. m. Y', minDate: '{{ now()->format('d. m. Y') }}'})">
+                            <div x-data="{}" x-init="flatpickr($refs.input, { dateFormat: 'd. m. Y'})">
                                 <x-form.input x-ref="input" wire:model.blur="paid_at" @class(['border-red-500' => $errors->has('paid_at')])/>
                             </div>
                             <x-form.input-error name="paid_at"/>
