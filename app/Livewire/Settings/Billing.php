@@ -6,6 +6,7 @@ namespace App\Livewire\Settings;
 
 use App\Actions\Ares\GetCompanyDetailsFromCompanyId;
 use App\Enums\Country;
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\User;
 use Exception;
@@ -15,6 +16,7 @@ use Livewire\Component;
 
 final class Billing extends Component
 {
+    use CanPushNotifications;
     use ResetsValidationAfterUpdate;
 
     public User $user;
@@ -71,6 +73,8 @@ final class Billing extends Component
         $data = $this->validate();
 
         $this->user->update($data);
+
+        $this->pushNotification(__('Success'));
     }
 
     /** @return array<string, mixed> */

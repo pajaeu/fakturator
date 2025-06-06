@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Settings\User;
 
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Models\User;
 use Illuminate\View\View;
@@ -12,6 +13,7 @@ use Livewire\Component;
 
 final class Password extends Component
 {
+    use CanPushNotifications;
     use ResetsValidationAfterUpdate;
 
     #[Locked]
@@ -27,6 +29,8 @@ final class Password extends Component
         $user = auth()->user();
 
         $this->user = $user;
+
+        $this->pushNotification(__('Success'));
     }
 
     public function save(): void

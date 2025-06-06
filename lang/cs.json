@@ -408,5 +408,9 @@
 	"Change your password": "Změnit heslo",
 	"Your current tier": "Vaš aktuální plán",
 	"Upgrade to Pro": "Přechod na verzi Pro",
-	"Upgrading to the Pro version is currently not possible.": "Přechod na verzi Pro momentálně není možný."
+	"Upgrading to the Pro version is currently not possible.": "Přechod na verzi Pro momentálně není možný.",
+	"Success": "Úspěch",
+	"Something wrong occurred": "Někde nastala chyba",
+	"Deleted": "Smazáno",
+	"Recalculated": "Přepočítáno"
 }

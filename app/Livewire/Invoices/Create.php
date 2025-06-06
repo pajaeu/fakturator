@@ -8,6 +8,7 @@ use App\Actions\GenerateLatestInvoiceNumber;
 use App\Enums\Currency;
 use App\Enums\PaymentMethod;
 use App\Livewire\Concerns\CanCreateContact;
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Livewire\Concerns\HasContactSearch;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
@@ -22,6 +23,7 @@ use Livewire\Component;
 final class Create extends Component
 {
     use CanCreateContact;
+    use CanPushNotifications;
     use CreatesUpdatesInvoice;
     use HasContactSearch;
     use HasInvoiceItems;
@@ -80,6 +82,8 @@ final class Create extends Component
             'supplier_zip' => $user->billing_zip,
             'user_id' => $user->id,
         ]);
+
+        $this->pushNotification(__('Success'));
 
         $this->redirectRoute('invoices.index', navigate: true);
     }

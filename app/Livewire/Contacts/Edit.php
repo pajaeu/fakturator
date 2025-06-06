@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Contacts;
 
 use App\Enums\Country;
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
 use App\Livewire\Contacts\Concerns\CreatesUpdatesContact;
 use App\Models\Contact;
@@ -15,6 +16,7 @@ use Livewire\Component;
 
 final class Edit extends Component
 {
+    use CanPushNotifications;
     use CreatesUpdatesContact;
     use ResetsValidationAfterUpdate;
 
@@ -38,6 +40,8 @@ final class Edit extends Component
         $data = $this->validate();
 
         $this->contact->update($data);
+
+        $this->pushNotification(__('Success'));
 
         $this->redirectRoute('contacts.index', navigate: true);
     }

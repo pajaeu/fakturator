@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Settings;
 
 use App\Actions\GetSwiftCodeFromBankCode;
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Models\BankAccount;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -12,6 +13,8 @@ use Livewire\Component;
 
 final class Accounts extends Component
 {
+    use CanPushNotifications;
+
     public string $name = '';
 
     public string $number = '';
@@ -41,6 +44,8 @@ final class Accounts extends Component
         ]);
 
         $this->dispatch('close-account-create-modal');
+
+        $this->pushNotification(__('Success'));
     }
 
     public function setAsDefault(int $accountId): void
@@ -60,6 +65,8 @@ final class Accounts extends Component
         $account->update([
             'default' => true,
         ]);
+
+        $this->pushNotification(__('Success'));
     }
 
     /** @return array<string, mixed> */

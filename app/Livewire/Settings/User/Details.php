@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Settings\User;
 
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -12,6 +13,8 @@ use Livewire\Component;
 
 final class Details extends Component
 {
+    use CanPushNotifications;
+
     #[Locked]
     public User $user;
 
@@ -32,6 +35,8 @@ final class Details extends Component
         $data = $this->validate();
 
         $this->user->update($data);
+
+        $this->pushNotification(__('Success'));
     }
 
     public function delete(): void

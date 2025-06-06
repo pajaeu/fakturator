@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Contacts;
 
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Models\Contact;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -11,6 +12,7 @@ use Livewire\WithPagination;
 
 final class Index extends Component
 {
+    use CanPushNotifications;
     use WithPagination;
 
     public bool $selectAllContacts = false;
@@ -39,6 +41,8 @@ final class Index extends Component
         $this->authorize('delete', $contact);
 
         $contact->delete();
+
+        $this->pushNotification(__('Deleted'));
     }
 
     public function bulkDelete(): void
@@ -51,6 +55,8 @@ final class Index extends Component
 
         $this->selectAllContacts = false;
         $this->selectedContacts = [];
+
+        $this->pushNotification(__('Deleted'));
     }
 
     public function render(): View

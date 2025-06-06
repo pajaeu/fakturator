@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Invoices;
 
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Models\Invoice;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -11,6 +12,7 @@ use Livewire\WithPagination;
 
 final class Index extends Component
 {
+    use CanPushNotifications;
     use WithPagination;
 
     public bool $selectAllInvoices = false;
@@ -39,6 +41,8 @@ final class Index extends Component
         $this->authorize('delete', $invoice);
 
         $invoice->delete();
+
+        $this->pushNotification(__('Deleted'));
     }
 
     public function bulkDelete(): void
@@ -51,6 +55,8 @@ final class Index extends Component
 
         $this->selectAllInvoices = false;
         $this->selectedInvoices = [];
+
+        $this->pushNotification(__('Deleted'));
     }
 
     public function render(): View

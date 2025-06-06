@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Invoices;
 
+use App\Livewire\Concerns\CanPushNotifications;
 use App\Livewire\Concerns\HasContactSearch;
 use App\Livewire\Concerns\HasInvoiceItems;
 use App\Livewire\Concerns\ResetsValidationAfterUpdate;
@@ -16,6 +17,7 @@ use Livewire\Component;
 
 final class Edit extends Component
 {
+    use CanPushNotifications;
     use CreatesUpdatesInvoice;
     use HasContactSearch;
     use HasInvoiceItems;
@@ -69,6 +71,8 @@ final class Edit extends Component
             'issued_at' => Carbon::createFromFormat('d. m. Y', $this->issued_at)?->toDateString(),
             'due_at' => Carbon::createFromFormat('d. m. Y', $this->due_at)?->toDateString(),
         ]);
+
+        $this->pushNotification(__('Success'));
 
         $this->redirectRoute('invoices.index', navigate: true);
     }
