@@ -22,7 +22,7 @@
                     <x-icons.pencil class="size-6 text-blue-600"/>
                     <span>{{ __('Edit account') }}</span>
                 </x-button>
-                <x-button variant="outline-gray">
+                <x-button href="{{ route('settings.user.password') }}" :link="true" variant="outline-gray">
                     <x-icons.lock class="size-6 text-blue-600"/>
                     <span>{{ __('Change login credentials') }}</span>
                 </x-button>
