@@ -3,7 +3,7 @@
         <a href="{{ route('dashboard') }}" wire:navigate class="flex items-center gap-2">
             <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-auto h-7">
             @if(auth()->user()->tier === \App\Enums\UserTier::PRO)
-                <span class="-mt-2 py-1 px-2 rounded-full text-xs font-medium text-white bg-amber-500">PRO</span>
+                <span class="hidden md:inline-block -mt-2 py-1 px-2 rounded-full text-xs font-medium text-white bg-amber-500">PRO</span>
             @endif
         </a>
         <div class="ms-6 hidden md:flex items-center gap-1">
