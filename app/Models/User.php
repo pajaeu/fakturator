@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Enums\Country;
+use App\Enums\UserTier;
 use Carbon\Carbon;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -25,6 +26,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string|null $billing_city
  * @property Country|null $billing_country
  * @property string|null $billing_zip
+ * @property UserTier $tier
  * @property Carbon $updated_at
  * @property Carbon $created_at
  * @property-read Collection<int, Contact> $contacts
@@ -75,6 +77,7 @@ final class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'billing_country' => Country::class,
+            'tier' => UserTier::class,
         ];
     }
 }

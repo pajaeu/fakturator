@@ -1,7 +1,10 @@
 <header class="py-4 border-b border-gray-300 bg-gray-100">
     <x-container class="flex items-center">
-        <a href="{{ route('dashboard') }}" wire:navigate class="block">
+        <a href="{{ route('dashboard') }}" wire:navigate class="flex items-center gap-2">
             <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="w-auto h-7">
+            @if(auth()->user()->tier === \App\Enums\UserTier::PRO)
+                <span class="-mt-2 py-1 px-2 rounded-full text-xs font-medium text-white bg-amber-500">PRO</span>
+            @endif
         </a>
         <div class="ms-6 flex items-center gap-1">
             <a href="{{ route('invoices.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('invoices.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Invoices') }}</a>
