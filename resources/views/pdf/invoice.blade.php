@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ __('Invoice')  }} {{ $invoice->number }}</title>
+    <title>{{ __('Invoice number')  }} {{ $invoice->number }}</title>
     @vite(['resources/css/app.css'])
 </head>
 <body class="box-content h-screen text-sm leading-tight text-gray-800">
@@ -23,7 +23,7 @@
             <table class="w-full border-collapse">
                 <tr>
                     <td class="w-1/2 p-3 border-r border-b border-gray-200 align-top">
-                        <div class="text-xs text-gray-400 uppercase mb-4">Dodavatel</div>
+                        <div class="text-xs text-gray-400 uppercase mb-4">{{ __('Supplier') }}</div>
                         <div class="text-base">{{ $invoice->supplier_company }}</div>
                         <div>{{ $invoice->supplier_address }}</div>
                         <div>{{ $invoice->supplier_zip }} {{ $invoice->supplier_city }}</div>
@@ -53,7 +53,7 @@
                         </table>
                     </td>
                     <td class="w-1/2 p-3 border-b border-gray-200 align-top">
-                        <div class="text-xs text-gray-400 uppercase mb-4">Odběratel</div>
+                        <div class="text-xs text-gray-400 uppercase mb-4">{{ __('Customer') }}</div>
                         <div class="text-base">{{ $invoice->customer_company }}</div>
                         <div>{{ $invoice->customer_address }}</div>
                         <div>{{ $invoice->customer_zip }} {{ $invoice->customer_city }}</div>
