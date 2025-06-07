@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use Illuminate\Support\Str;
+use Spatie\Browsershot\Browsershot;
 use Spatie\LaravelPdf\Facades\Pdf;
 use Spatie\LaravelPdf\PdfBuilder;
 
@@ -33,7 +34,13 @@ final class InvoiceController
             ->toString();
 
         /** @var PdfBuilder $pdf */
-        $pdf = Pdf::view('pdf.invoice', ['invoice' => $invoice]);
+        $pdf = Pdf::view('pdf.invoice', ['invoice' => $invoice])
+            ->withBrowsershot(function (Browsershot $browsershot) {
+                $browsershot
+                    ->addChromiumArguments([
+                        '--no-sandbox',
+                    ]);
+            });
 
         return $pdf->name($name);
     }
