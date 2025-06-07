@@ -85,4 +85,10 @@ final class Invoice extends Model
     {
         return $this->belongsTo(BankAccount::class);
     }
+
+    public function isOverdue(): bool
+    {
+
+        return $this->due_at->isPast() && ! $this->is_paid;
+    }
 }

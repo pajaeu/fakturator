@@ -27,6 +27,7 @@
                         </x-table.head>
                         <x-table.head width="15%">{{ __('Bill number') }}</x-table.head>
                         <x-table.head>{{ __('Customer') }}</x-table.head>
+                        <x-table.head width="50px" align="center">{{ __('Paid') }}</x-table.head>
                         <x-table.head align="right">{{ __('Issued at') }}</x-table.head>
                         <x-table.head align="right">{{ __('Total with VAT') }}</x-table.head>
                         <x-table.head></x-table.head>
@@ -40,6 +41,17 @@
                             </x-table.column>
                             <x-table.column>{{ $invoice->number }}</x-table.column>
                             <x-table.column>{{ $invoice->customer_company }}</x-table.column>
+                            <x-table.column align="center">
+                                @if($invoice->is_paid)
+                                    <x-icons.check class="mx-auto size-5 text-green-600"/>
+                                @else
+                                    @if($invoice->isOverdue())
+                                        <x-icons.x class="mx-auto size-5 text-red-600"/>
+                                    @else
+                                        <x-icons.x class="mx-auto size-5 text-gray-600"/>
+                                    @endif
+                                @endif
+                            </x-table.column>
                             <x-table.column align="right">{{ $invoice->issued_at->format('d. m. Y') }}</x-table.column>
                             <x-table.column align="right">{{ price($invoice->total, $invoice->currency)->format() }}</x-table.column>
                             <x-table.column align="right">
