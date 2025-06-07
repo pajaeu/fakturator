@@ -6,13 +6,13 @@ namespace App\Enums;
 
 enum Country: string
 {
-    case CZECH = 'CZ';
+    case CZECHIA = 'CZ';
     case SLOVAKIA = 'SK';
 
     public function label(): string
     {
         return match ($this) {
-            self::CZECH => __('Czech'),
+            self::CZECHIA => __('Czechia'),
             self::SLOVAKIA => __('Slovakia'),
         };
     }
