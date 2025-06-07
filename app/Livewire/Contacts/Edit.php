@@ -26,7 +26,7 @@ final class Edit extends Component
     {
         $this->contact = $contact;
 
-        $this->fill($this->contact);
+        $this->fill($contact);
     }
 
     public function updatedCompanyId(string $value): void
