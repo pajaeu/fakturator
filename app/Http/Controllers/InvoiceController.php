@@ -38,6 +38,7 @@ final class InvoiceController
 
         if (app()->isProduction()) {
             $pdf->withBrowsershot(function (Browsershot $browsershot) {
+                $browsershot->setChromePath('/usr/bin/google-chrome-stable');
                 $browsershot->addChromiumArguments([
                     '--headless=new',
                     '--disable-dev-shm-usage',
