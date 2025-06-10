@@ -34,13 +34,13 @@ final class InvoiceController
             ->toString();
 
         /** @var PdfBuilder $pdf */
-        $pdf = Pdf::view('pdf.invoice', ['invoice' => $invoice])
-            ->withBrowsershot(function (Browsershot $browsershot) {
-                $browsershot
-                    ->addChromiumArguments([
-                        '--no-sandbox',
-                    ]);
+        $pdf = Pdf::view('pdf.invoice', ['invoice' => $invoice]);
+
+        if (app()->isProduction()) {
+            $pdf->withBrowsershot(function (Browsershot $browsershot) {
+                $browsershot->setChromePath('/home/fakturator.eu/chrome/chrome-headless-shell');
             });
+        }
 
         return $pdf->name($name);
     }
