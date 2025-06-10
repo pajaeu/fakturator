@@ -415,5 +415,6 @@
 	"Recalculated": "Přepočítáno",
 	"Paid": "Zaplaceno",
 	"Pay": "Zaplatit",
-	"Paid at": "Datum platby"
+	"Paid at": "Datum platby",
+	"Invoice failed to generate.": "Fakturu se nepodařilo vygenerovat."
 }
