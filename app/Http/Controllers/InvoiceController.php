@@ -38,7 +38,28 @@ final class InvoiceController
 
         if (app()->isProduction()) {
             $pdf->withBrowsershot(function (Browsershot $browsershot) {
-                $browsershot->setChromePath('/home/fakturator.eu/chrome/chrome-headless-shell');
+                $browsershot->addChromiumArguments([
+                    '--headless=new',
+                    '--disable-dev-shm-usage',
+                    '--disable-gpu',
+                    '--disable-software-rasterizer',
+                    '--disable-background-timer-throttling',
+                    '--disable-backgrounding-occluded-windows',
+                    '--disable-renderer-backgrounding',
+                    '--disable-features=TranslateUI',
+                    '--disable-extensions',
+                    '--disable-default-apps',
+                    '--disable-sync',
+                    '--hide-scrollbars',
+                    '--mute-audio',
+                    '--no-first-run',
+                    '--disable-background-networking',
+                    '--disable-web-security',
+                    '--allow-running-insecure-content',
+                    '--disable-features=VizDisplayCompositor',
+                    '--run-all-compositor-stages-before-draw',
+                    '--disable-ipc-flooding-protection',
+                ]);
             });
         }
 
