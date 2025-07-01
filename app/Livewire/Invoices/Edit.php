@@ -26,7 +26,7 @@ final class Edit extends Component
     #[Locked]
     public Invoice $invoice;
 
-    public string $paid_at = '';
+    public ?string $paid_at = '';
 
     public function mount(Invoice $invoice): void
     {
@@ -36,7 +36,7 @@ final class Edit extends Component
 
         $this->issued_at = $invoice->issued_at->format('d. m. Y');
         $this->due_at = $invoice->due_at->format('d. m. Y');
-        $this->paid_at = $invoice->is_paid ? $invoice->paid_at->format('d. m. Y') : '';
+        $this->paid_at = $invoice->is_paid ? $invoice->paid_at?->format('d. m. Y') : '';
     }
 
     public function save(): void
@@ -69,7 +69,7 @@ final class Edit extends Component
             'items',
         ]);
 
-        if ($this->invoice->is_paid && $this->paid_at !== '') {
+        if ($this->invoice->is_paid && $this->paid_at !== '' && $this->paid_at !== null) {
             $data['paid_at'] = Carbon::createFromFormat('d. m. Y', $this->paid_at)?->toDateString();
         }
 

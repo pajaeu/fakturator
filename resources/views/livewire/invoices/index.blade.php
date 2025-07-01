@@ -39,7 +39,9 @@
                             <x-table.column>
                                 <x-form.checkbox wire:model.live="selectedInvoices" value="{{ $invoice->id }}"/>
                             </x-table.column>
-                            <x-table.column>{{ $invoice->number }}</x-table.column>
+                            <x-table.column>
+                                <a href="{{ route('invoices.show', ['invoice' => $invoice]) }}" wire:navigate class="hover:underline">{{ $invoice->number }}</a>
+                            </x-table.column>
                             <x-table.column>{{ $invoice->customer_company }}</x-table.column>
                             <x-table.column align="center">
                                 @if($invoice->is_paid)
