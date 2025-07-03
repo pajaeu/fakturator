@@ -46,7 +46,10 @@ final class Notification implements Wireable
     public function color(): ?string
     {
         return match ($this->type) {
-            self::SUCCESS => 'text-green-600',
+            self::SUCCESS => 'bg-green-600',
+            self::ERROR => 'bg-red-600',
+            self::WARNING => 'bg-yellow-500',
+            self::INFO => 'bg-cyan-500',
             default => null
         };
     }
