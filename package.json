@@ -16,7 +16,6 @@
     "dependencies": {
         "apexcharts": "^4.7.0",
         "flatpickr": "^4.6.13",
-        "puppeteer-core": "^24.7.2",
         "sortablejs": "^1.15.6"
     }
 }
