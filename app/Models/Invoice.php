@@ -49,6 +49,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property-read BankAccount|null $bankAccount
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property int|null $folder_id
+ * @property-read Folder|null $folder
  * @property int $user_id
  * @property-read User $user
  */
@@ -84,6 +86,12 @@ final class Invoice extends Model
     public function bankAccount(): BelongsTo
     {
         return $this->belongsTo(BankAccount::class);
+    }
+
+    /** @return BelongsTo<Folder, $this> */
+    public function folder(): BelongsTo
+    {
+        return $this->belongsTo(Folder::class);
     }
 
     public function isOverdue(): bool
