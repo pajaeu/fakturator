@@ -9,6 +9,7 @@
         <div class="ms-6 hidden md:flex items-center gap-1">
             <a href="{{ route('invoices.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('invoices.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Invoices') }}</a>
             <a href="{{ route('contacts.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('contacts.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Contacts') }}</a>
+            <a href="{{ route('folders.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('folders.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Folders') }}</a>
             <a href="{{ route('settings.index') }}" wire:navigate class="py-2 px-4 rounded-full text-sm font-medium border @if(request()->routeIs('settings.*')) border-blue-600 @else border-transparent hover:border-gray-800 @endif transition-colors">{{ __('Settings') }}</a>
         </div>
         <div class="ms-auto flex items-center gap-2 md:gap-4">
