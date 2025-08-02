@@ -3,9 +3,9 @@
 	'buttons' => null
 ])
 
-<div class="flex md:items-center mb-6">
+<div class="flex md:items-start mb-6">
     <div>
-        <h1 @class(['text-2xl md:text-3xl font-medium', 'mb-2' => $head])>{{ $title }}</h1>
+        <h1 @class(['text-2xl md:text-3xl font-medium'])>{{ $title }}</h1>
         @if($head)
             {{ $head }}
         @endif
