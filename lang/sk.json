@@ -419,5 +419,8 @@
 	"Folders": "Priečinok",
 	"New folder": "Nový priečinok",
 	"Add new folder": "Pridanie nového priečinka",
-	"Edit folder": "Upravit priečinok"
+	"Edit folder": "Upraviť priečinok",
+	"Move to folder": "Presunúť do priečinka",
+	"Select folder": "Vybrať priečinok",
+	"Moved": "Presunutá"
 }

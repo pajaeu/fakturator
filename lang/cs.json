@@ -420,5 +420,8 @@
 	"Folders": "Složky",
 	"New folder": "Nová složka",
 	"Add new folder": "Přidat novou složku",
-	"Edit folder": "Upravit složku"
+	"Edit folder": "Upravit složku",
+	"Move to folder": "Přesunout do složky",
+	"Select folder": "Vyberte složku",
+	"Moved": "Přesunuto"
 }
