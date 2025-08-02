@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/contact/edit/{contact}', App\Livewire\Contacts\Edit::class)->name('contacts.edit');
 
     Route::get('/folders', App\Livewire\Folders\Index::class)->name('folders.index');
+    Route::get('/folder/edit/{folder}', App\Livewire\Folders\Edit::class)->name('folders.edit');
 
     Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
         Route::view('', 'settings')->name('index');

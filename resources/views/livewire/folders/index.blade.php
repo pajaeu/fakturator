@@ -39,7 +39,7 @@
                             <x-table.column align="right">
                                 <x-table.action-dropdown>
                                     <x-slot:items>
-                                        <x-table.action-dropdown.item>
+                                        <x-table.action-dropdown.item href="{{ route('folders.edit', ['folder' => $folder]) }}" :link="true" wire:navigate>
                                             <x-icons.pencil class="size-5 text-blue-600"/>
                                             <span>{{ __('Edit') }}</span>
                                         </x-table.action-dropdown.item>

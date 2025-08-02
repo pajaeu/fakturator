@@ -418,5 +418,6 @@
 	"Invoice failed to generate.": "Faktúru sa nepodarilo vygenerovať.",
 	"Folders": "Priečinok",
 	"New folder": "Nový priečinok",
-	"Add new folder": "Pridanie nového priečinka"
+	"Add new folder": "Pridanie nového priečinka",
+	"Edit folder": "Upravit priečinok"
 }
