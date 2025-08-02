@@ -5,10 +5,11 @@
         <x-slot:title>{{ __('Issued invoices') }}</x-slot:title>
         <x-slot:head>
             @if($this->searchedFolder)
-                <div class="mt-2 inline-flex py-1 px-2 gap-2 rounded-full text-sm font-medium text-gray-700 border border-gray-200">
+                <a href="{{ route('invoices.index') }}" wire:navigate class="group mt-2 inline-flex py-1 px-2 items-center gap-1 rounded-full text-sm font-medium text-gray-700 border border-gray-200">
                     <x-icons.folder class="text-blue-600 size-5"/>
                     <span>{{ $this->searchedFolder->name }}</span>
-                </div>
+                    <x-icons.x class="ms-1 size-4 text-gray-400 group-hover:text-red-500 transition-colors"/>
+                </a>
             @endif
         </x-slot:head>
         <x-slot:buttons>

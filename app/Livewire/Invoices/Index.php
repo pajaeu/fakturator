@@ -39,7 +39,7 @@ final class Index extends Component
     }
 
     #[Computed]
-    public function searchedFolder()
+    public function searchedFolder(): ?Folder
     {
         return $this->folderId ? Folder::query()->find($this->folderId) : null;
     }
