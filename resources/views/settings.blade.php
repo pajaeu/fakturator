@@ -18,11 +18,11 @@
                 </div>
             </div>
             <div class="mt-4 md:mt-0 md:ms-auto flex flex-col md:flex-row items-start md:items-center gap-3">
-                <x-button href="{{ route('settings.user.details') }}" :link="true" variant="outline-gray">
+                <x-button href="{{ route('settings.user.details') }}" wire:navigate :link="true" variant="outline-gray">
                     <x-icons.pencil class="size-6 text-blue-600"/>
                     <span>{{ __('Edit account') }}</span>
                 </x-button>
-                <x-button href="{{ route('settings.user.password') }}" :link="true" variant="outline-gray">
+                <x-button href="{{ route('settings.user.password') }}" wire:navigate :link="true" variant="outline-gray">
                     <x-icons.lock class="size-6 text-blue-600"/>
                     <span>{{ __('Change login credentials') }}</span>
                 </x-button>
