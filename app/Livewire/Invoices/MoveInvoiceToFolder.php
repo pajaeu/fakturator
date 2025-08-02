@@ -17,7 +17,7 @@ final class MoveInvoiceToFolder extends Component
 
     public ?Invoice $invoice;
 
-    public ?int $folder_id = null;
+    public string|int $folder_id = '';
 
     #[On('open-move-to-folder-modal')]
     public function openModal(int $id): void
