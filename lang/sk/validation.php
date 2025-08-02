@@ -306,5 +306,6 @@ return [
         'bank_code' => 'kód banky',
         'payment_method' => 'spôsob platby',
         'bank_account_id' => 'bankový účet',
+        'rate' => 'sadzba',
     ],
 ];
