@@ -7,7 +7,9 @@ namespace App\Livewire\Invoices;
 use App\Livewire\Concerns\CanPushNotifications;
 use App\Models\Folder;
 use App\Models\Invoice;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -15,6 +17,9 @@ final class Index extends Component
 {
     use CanPushNotifications;
     use WithPagination;
+
+    #[Url(as: 'folder')]
+    public ?string $folderId = null;
 
     public bool $selectAllInvoices = false;
 
@@ -62,8 +67,14 @@ final class Index extends Component
 
     public function render(): View
     {
+        $invoices = Invoice::query()->latest()
+            ->when($this->folderId, function (Builder $query) {
+                $query->where('folder_id', $this->folderId);
+            })
+            ->paginate(24);
+
         return view('livewire.invoices.index', [
-            'invoices' => Invoice::query()->latest()->paginate(24),
+            'invoices' => $invoices,
             'folders' => Folder::all(),
         ]);
     }
