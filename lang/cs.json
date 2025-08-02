@@ -416,5 +416,12 @@
 	"Paid": "Zaplaceno",
 	"Pay": "Zaplatit",
 	"Paid at": "Datum platby",
-	"Invoice failed to generate.": "Fakturu se nepodařilo vygenerovat."
+	"Invoice failed to generate.": "Fakturu se nepodařilo vygenerovat.",
+	"Folders": "Složky",
+	"New folder": "Nová složka",
+	"Add new folder": "Přidat novou složku",
+	"Edit folder": "Upravit složku",
+	"Move to folder": "Přesunout do složky",
+	"Select folder": "Vyberte složku",
+	"Moved": "Přesunuto"
 }

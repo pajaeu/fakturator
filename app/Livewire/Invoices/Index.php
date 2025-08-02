@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Livewire\Invoices;
 
 use App\Livewire\Concerns\CanPushNotifications;
+use App\Models\Folder;
 use App\Models\Invoice;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -63,6 +64,7 @@ final class Index extends Component
     {
         return view('livewire.invoices.index', [
             'invoices' => Invoice::query()->latest()->paginate(24),
+            'folders' => Folder::all(),
         ]);
     }
 }
