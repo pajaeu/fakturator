@@ -424,5 +424,7 @@
 	"Move to folder": "Přesunout do složky",
 	"Select folder": "Vyberte složku",
 	"Moved": "Přesunuto",
-	"Show invoices": "Zobrazit faktury"
+	"Show invoices": "Zobrazit faktury",
+	"Add rate": "Přidat sazbu",
+	"Rate": "Sazba"
 }

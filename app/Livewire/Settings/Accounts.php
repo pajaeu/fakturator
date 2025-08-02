@@ -9,6 +9,7 @@ use App\Livewire\Concerns\CanPushNotifications;
 use App\Models\BankAccount;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 final class Accounts extends Component
@@ -28,6 +29,15 @@ final class Accounts extends Component
     public function updatedBankCode(string $value): void
     {
         $this->swift = GetSwiftCodeFromBankCode::handle($value);
+    }
+
+    #[On('open-account-create-modal')]
+    #[On('close-account-create-modal')]
+    public function resetCreateModal(): void
+    {
+        $this->reset('name', 'number', 'bank_code', 'iban', 'swift');
+
+        $this->resetErrorBag(['name', 'number', 'bank_code', 'iban', 'swift']);
     }
 
     public function addNewAccount(): void

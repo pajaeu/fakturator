@@ -61,10 +61,10 @@
                 <x-icons.bank class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('Bank accounts') }}</div>
             </a>
-            <div class="opacity-50 flex justify-center items-center py-5 md:py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
+            <a href="{{ route('settings.vat-rates') }}" wire:navigate class="flex justify-center items-center py-5 md:py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.circle-percentage class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('VAT rates') }}</div>
-            </div>
+            </a>
             <div class="opacity-50 flex justify-center items-center py-5 md:py-10 px-5 gap-5 rounded text-gray-600 bg-gray-50 hover:text-gray-800 hover:bg-gray-100 transition-colors">
                 <x-icons.api class="size-10 text-blue-600"/>
                 <div class="text-2xl">{{ __('API') }}</div>

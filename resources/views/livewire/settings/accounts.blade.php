@@ -9,7 +9,7 @@
                 <span>{{ __('Back') }}</span>
             </x-button>
             <x-modal x-on:open-account-create-modal.window="show = true" x-on:close-account-create-modal.window="show = false">
-                <x-button @click="show = !show">
+                <x-button @click="$dispatch('open-account-create-modal')">
                     <x-icons.plus class="size-4"/>
                     <span>{{ __('Add new account') }}</span>
                 </x-button>
