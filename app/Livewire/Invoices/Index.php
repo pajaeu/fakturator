@@ -9,6 +9,7 @@ use App\Models\Folder;
 use App\Models\Invoice;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\View\View;
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -34,6 +35,12 @@ final class Index extends Component
     public function updatedSelectedInvoices(): void
     {
         $this->selectAllInvoices = false;
+    }
+
+    #[Computed]
+    public function searchedFolder()
+    {
+        return $this->folderId ? Folder::query()->find($this->folderId) : null;
     }
 
     public function delete(int $id): void
