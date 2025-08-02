@@ -3,6 +3,14 @@
 <div>
     <x-header>
         <x-slot:title>{{ __('Issued invoices') }}</x-slot:title>
+        <x-slot:head>
+            @if($this->searchedFolder)
+                <div class="mt-2 inline-flex py-1 px-2 gap-2 rounded-full text-sm font-medium text-gray-700 border border-gray-200">
+                    <x-icons.folder class="text-blue-600 size-5"/>
+                    <span>{{ $this->searchedFolder->name }}</span>
+                </div>
+            @endif
+        </x-slot:head>
         <x-slot:buttons>
             <x-button href="{{ route('invoices.create') }}" :link="true" wire:navigate>
                 <x-icons.plus class="size-4"/>
