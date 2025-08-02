@@ -53,6 +53,8 @@ final class MoveInvoiceToFolder extends Component
 
         $this->invoice->save();
 
+        $this->dispatch('refresh-invoices');
+
         $this->pushNotification(__('Moved'));
 
         $this->dispatch('close-move-to-folder-modal');
