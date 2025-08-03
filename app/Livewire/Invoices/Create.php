@@ -16,6 +16,7 @@ use App\Livewire\Invoices\Concerns\CreatesUpdatesInvoice;
 use App\Models\BankAccount;
 use App\Models\Invoice;
 use App\Models\User;
+use App\Support\Notification;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Livewire\Component;
@@ -46,6 +47,12 @@ final class Create extends Component
 
         /** @var User $user */
         $user = auth()->user();
+
+        if (! $user->can('create', Invoice::class)) {
+            $this->pushNotification(__('You already created 10 invoices this month'), Notification::ERROR);
+
+            return;
+        }
 
         /** @var array<string, mixed> $data */
         $data = $this->pull([

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Policies;
 
+use App\Enums\UserTier;
 use App\Models\Invoice;
 use App\Models\User;
 
@@ -28,9 +29,18 @@ final class InvoicePolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(): bool
+    public function create(User $user): bool
     {
-        return true;
+        if ($user->tier !== UserTier::FREE) {
+            return true;
+        }
+
+        $invoiceCount = Invoice::query()
+            ->whereMonth('created_at', now()->month)
+            ->whereYear('created_at', now()->year)
+            ->count();
+
+        return $invoiceCount < 10;
     }
 
     /**

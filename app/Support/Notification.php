@@ -39,6 +39,7 @@ final class Notification implements Wireable
     {
         return match ($this->type) {
             self::SUCCESS => 'icons.check',
+            self::WARNING, self::ERROR => 'icons.alert',
             default => null
         };
     }
