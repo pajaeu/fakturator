@@ -72,6 +72,10 @@
                                             <x-icons.download class="size-5 text-blue-600"/>
                                             <span>{{ __('Download') }}</span>
                                         </x-table.action-dropdown.item>
+                                        <x-table.action-dropdown.item wire:click="duplicate({{ $invoice->id }})" wire:confirm="{{ __('Are you sure you want to duplicate this record?') }}">
+                                            <x-icons.copy class="size-5 text-blue-600"/>
+                                            <span>{{ __('Duplicate') }}</span>
+                                        </x-table.action-dropdown.item>
                                         <x-table.action-dropdown.item @click="show = false; $dispatch('open-move-to-folder-modal', { id: {{ $invoice->id }} })">
                                             <x-icons.folder class="size-5 text-blue-600"/>
                                             <span>{{ __('Move to folder') }}</span>

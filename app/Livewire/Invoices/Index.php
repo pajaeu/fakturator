@@ -44,6 +44,23 @@ final class Index extends Component
         return $this->folderId ? Folder::query()->find($this->folderId) : null;
     }
 
+    public function duplicate(int $id): void
+    {
+        $invoice = Invoice::query()->find($id);
+
+        if (! $invoice) {
+            return;
+        }
+
+        $newInvoice = $invoice->replicate();
+        $newInvoice->number = $newInvoice->number.'-copy';
+        $newInvoice->variable_symbol = $newInvoice->variable_symbol.'-copy';
+
+        $this->pushNotification(__('Duplicated'));
+
+        $newInvoice->save();
+    }
+
     public function delete(int $id): void
     {
         $invoice = Invoice::query()->find($id);

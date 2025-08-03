@@ -427,5 +427,7 @@
 	"Show invoices": "Zobrazit faktury",
 	"Add rate": "Přidat sazbu",
 	"Rate": "Sazba",
-	"You already created 10 invoices this month": "Tento měsíc jste již vytvořili 10 faktur"
+	"You already created 10 invoices this month": "Tento měsíc jste již vytvořili 10 faktur",
+	"Are you sure you want to duplicate this record?": "Opravdu chcete tento záznam duplikovat?",
+	"Duplicated": "Duplikováno"
 }
